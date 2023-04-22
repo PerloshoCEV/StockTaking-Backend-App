@@ -1,0 +1,135 @@
+{
+	"info": {
+		"_postman_id": "de13a4a0-3578-45fc-83dc-545a42d17b62",
+		"name": "A_Type_StockTaking",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15014217"
+	},
+	"item": [
+		{
+			"name": "CreateType",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"id\": null,\r\n\t\"name\": \"Fruta\",\r\n    \"description\": \"Piezas para una frutería.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/stocktaking/type",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"stocktaking",
+						"type"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ReadAllType",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/stocktaking/types",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"stocktaking",
+						"types"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ReadTypeID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/stocktaking/client?id=1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"stocktaking",
+						"client"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteTypeID",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/stocktaking/type?id=1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"stocktaking",
+						"type"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateType",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"id\": 1,\r\n\t\"name\": \"Fruta\",\r\n    \"description\": \"Piezas para una frutería2.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/stocktaking/type",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"stocktaking",
+						"type"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

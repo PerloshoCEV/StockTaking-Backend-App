@@ -1,0 +1,135 @@
+{
+	"info": {
+		"_postman_id": "d3600480-578b-410b-958b-1a580661ed40",
+		"name": "A_Client_StockTaking",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15014217"
+	},
+	"item": [
+		{
+			"name": "CreateClient",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"id\": null,\r\n\t\"name\": \"Ppepito\",\r\n    \"lastName\": \"Perez.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/stocktaking/client",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"stocktaking",
+						"client"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ReadAllClient",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/stocktaking/clients",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"stocktaking",
+						"clients"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ReadClientID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/stocktaking/client?id=1552",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"stocktaking",
+						"client"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1552"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteClientID",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/stocktaking/client?id=1552",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"stocktaking",
+						"client"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1552"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateClient",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"id\": 1552,\r\n\t\"name\": \"Manolito\",\r\n    \"lastName\": \"Perez.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/stocktaking/client",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"stocktaking",
+						"client"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
