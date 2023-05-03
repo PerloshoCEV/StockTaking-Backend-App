@@ -5,12 +5,14 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.stocktaking.ApiRepository.Delivery_Repository;
 import com.stocktaking.ApiServiceInterface.Base_ServiceInterface;
 import com.stocktaking.EntityBBDD.T_Delivery;
 import com.stocktaking.Entity_DTO.Delivery_Dto;
 
+@Service
 public class Delivery_Service implements Base_ServiceInterface<T_Delivery, Delivery_Dto>
 {
 	@Autowired

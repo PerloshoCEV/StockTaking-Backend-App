@@ -85,4 +85,10 @@ public class EmbKey_ProductAttribute implements Serializable
         		Objects.equals(attributeId, that.attributeId);
 	}
 	
+	@Override
+    public int hashCode() 
+	{
+		return Objects.hash(this.productId, this.attributeId);
+	}
+	
 }
