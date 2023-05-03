@@ -1,0 +1,8 @@
+2023-05-03 12:02:03 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*]NEXT_VAL"
+Syntax error in SQL statement "[*]NEXT_VAL"; SQL statement:
+NEXT_VAL [42000-214]
+2023-05-03 12:02:18 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*]SEQUENCE_NAME"; se esperaba "SAVEPOINT, SCRIPT, SHUTDOWN, SHOW"
+Syntax error in SQL statement "[*]SEQUENCE_NAME"; expected "SAVEPOINT, SCRIPT, SHUTDOWN, SHOW"; SQL statement:
+SEQUENCE_NAME [42001-214]
