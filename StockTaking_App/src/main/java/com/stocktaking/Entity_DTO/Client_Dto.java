@@ -12,7 +12,7 @@ public class Client_Dto implements MapperInterface<T_Client>
 	private String name;
 	private String lastName;
 	private String secondLastName;
-	private String age;
+	private Integer age;
 	
 	/*
 		Zona de Constructores
@@ -21,7 +21,7 @@ public class Client_Dto implements MapperInterface<T_Client>
 	{
 	}
 	
-	public Client_Dto(Long id, String name, String lastName, String secondLastName, String age) 
+	public Client_Dto(Long id, String name, String lastName, String secondLastName, Integer age) 
 	{
 		super();
 		this.id = id;
@@ -79,12 +79,12 @@ public class Client_Dto implements MapperInterface<T_Client>
 		this.secondLastName = secondLastName;
 	}
 
-	public String getAge() 
+	public Integer getAge() 
 	{
 		return age;
 	}
 
-	public void setAge(String age) 
+	public void setAge(Integer age) 
 	{
 		this.age = age;
 	}

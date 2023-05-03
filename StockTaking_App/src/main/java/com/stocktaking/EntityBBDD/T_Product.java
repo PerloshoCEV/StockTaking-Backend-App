@@ -162,9 +162,10 @@ public class T_Product
 		this.suppliers = suppliers;
 	}
 	
-	public void setAll(String name, Integer stock) 
+	public void setAll(String name, String description, Integer stock) 
 	{
 		this.name = name;
+		this.description = description;
 		this.stock = stock;
 	}
 }

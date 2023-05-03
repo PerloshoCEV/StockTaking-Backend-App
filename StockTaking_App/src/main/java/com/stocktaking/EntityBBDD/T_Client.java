@@ -36,7 +36,7 @@ public class T_Client
 	
 	// Spring JPA le dice al Gestor de Bases de Datos que la siguiente variable Java será un Atributo / Campo de la entidad.
 	@Column (name = "Age", unique = false, nullable = true)
-	String age;
+	Integer age;
 	
 	@OneToMany(mappedBy = "client")
 	List<T_Bill> products = new ArrayList<>();
@@ -49,7 +49,7 @@ public class T_Client
 		super();
 	}
 	
-	public T_Client(String name, String lastName, String secondLastName, String age) 
+	public T_Client(String name, String lastName, String secondLastName, Integer age) 
 	{
 		super();
 		this.name = name;
@@ -58,7 +58,7 @@ public class T_Client
 		this.age = age;
 	}
 	
-	public T_Client(Long id, String name, String lastName, String secondLastName, String age) 
+	public T_Client(Long id, String name, String lastName, String secondLastName, Integer age) 
 	{
 		super();
 		this.id = id;
@@ -68,7 +68,7 @@ public class T_Client
 		this.age = age;
 	}
 	
-	public T_Client(Long id, String name, String lastName, String secondLastName, String age,
+	public T_Client(Long id, String name, String lastName, String secondLastName, Integer age,
 			List<T_Bill> products) 
 	{
 		super();
@@ -115,10 +115,10 @@ public class T_Client
 	{
 		this.secondLastName = secondLastName;
 	}
-	public String getAge() {
+	public Integer getAge() {
 		return age;
 	}
-	public void setAge(String age) 
+	public void setAge(Integer age) 
 	{
 		this.age = age;
 	}
@@ -131,10 +131,11 @@ public class T_Client
 		this.products = products;
 	}
 	
-	public void setAll(String name, String lastName) 
+	public void setAll(String name, String lastName, String secondLastName, Integer age) 
 	{
-		
 		this.name = name;
 		this.lastName = lastName;
+		this.secondLastName = secondLastName;
+		this.age = age;
 	}
 }

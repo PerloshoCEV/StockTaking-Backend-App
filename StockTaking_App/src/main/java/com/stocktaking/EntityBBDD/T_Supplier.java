@@ -147,10 +147,11 @@ public class T_Supplier
 	}
 	
 	
-	public void setAll(String name, String email, String address) 
+	public void setAll(String name, String email, String address, String description) 
 	{
 		this.name = name;
 		this.email = email;
 		this.address = address;
+		this.description = description;
 	}
 }
