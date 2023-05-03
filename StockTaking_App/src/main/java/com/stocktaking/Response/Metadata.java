@@ -10,6 +10,9 @@ public class Metadata
 	/*
 		Constructores
 	*/
+	public Metadata() 
+	{
+	}
 	public Metadata(Pagination pag) 
 	{
 		pagination = pag;
