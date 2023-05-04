@@ -30,12 +30,10 @@ public class T_Supplier
 	
 	// Spring JPA le dice al Gestor de Bases de Datos que la siguiente variable Java será un Atributo / Campo de la entidad.
 	@Column (name = "Email", unique = true, nullable = false)
-	@NaturalId
 	String email;
 	
 	// Spring JPA le dice al Gestor de Bases de Datos que la siguiente variable Java será un Atributo / Campo de la entidad.
-	@Column (name = "Address", unique = true, nullable = false)
-	@NaturalId
+	@Column (name = "Address", nullable = false)
 	String address;
 	
 	// Spring JPA le dice al Gestor de Bases de Datos que la siguiente variable Java será un Atributo / Campo de la entidad.

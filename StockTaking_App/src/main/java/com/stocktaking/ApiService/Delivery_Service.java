@@ -21,11 +21,20 @@ public class Delivery_Service implements Base_ServiceInterface<T_Delivery, Deliv
 	@Override
 	public Delivery_Dto createBaseService(T_Delivery newDelivery) 
 	{
-		T_Delivery deliveryToSave = repository.save(newDelivery);
+		try
+		{
+			T_Delivery deliveryToSave = repository.save(newDelivery);
+			
+			Delivery_Dto deliveryDto = new Delivery_Dto(deliveryToSave);
+			
+			return deliveryDto;			
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace(); // Muestro por consola la pila detallada de errores.
+		}
 		
-		Delivery_Dto deliveryDto = new Delivery_Dto(deliveryToSave);
-		
-		return deliveryDto;
+		return null;
 	}
 
 	@Override
@@ -47,26 +56,44 @@ public class Delivery_Service implements Base_ServiceInterface<T_Delivery, Deliv
 	@Override
 	public Delivery_Dto readBaseId(Long id) 
 	{
-		T_Delivery deliveryToRead = repository.getReferenceById(id);
+		try
+		{
+			T_Delivery deliveryToRead = repository.getReferenceById(id);
+			
+			Delivery_Dto deliveryDto = new Delivery_Dto(deliveryToRead);
+			
+			return deliveryDto;			
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace(); // Muestro por consola la pila detallada de errores.
+		}
 		
-		Delivery_Dto deliveryDto = new Delivery_Dto(deliveryToRead);
-		
-		return deliveryDto;
+		return null;
 	}
 
 	@Override
 	public Delivery_Dto updateBase(T_Delivery delivery) 
 	{
-		T_Delivery deliveryToUpdate = repository.getReferenceById(delivery.getId());
-		deliveryToUpdate.setDate
+		try
+		{
+			T_Delivery deliveryToUpdate = repository.getReferenceById(delivery.getId());
+			deliveryToUpdate.setDate
 			(
-				delivery.getDate()
-			);
-		deliveryToUpdate = repository.save(deliveryToUpdate);
+					delivery.getDate()
+					);
+			deliveryToUpdate = repository.save(deliveryToUpdate);
+			
+			Delivery_Dto deliveryDto = new Delivery_Dto(deliveryToUpdate);
+			
+			return deliveryDto;			
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace(); // Muestro por consola la pila detallada de errores.
+		}
 		
-		Delivery_Dto deliveryDto = new Delivery_Dto(deliveryToUpdate);
-		
-		return deliveryDto;
+		return null;
 		
 	}
 
@@ -82,10 +109,10 @@ public class Delivery_Service implements Base_ServiceInterface<T_Delivery, Deliv
 		}
 		catch (Exception e)
 		{
-			return null;
+			return deliveryToDelete;
 		}
 		
-		return deliveryToDelete;
+		return null;
 	}
 
 	@Override

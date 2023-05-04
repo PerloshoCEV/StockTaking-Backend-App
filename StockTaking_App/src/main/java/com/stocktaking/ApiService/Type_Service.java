@@ -21,11 +21,20 @@ public class Type_Service implements Base_ServiceInterface<T_Type, Type_Dto>
 	@Override
 	public Type_Dto createBaseService(T_Type newType) 
 	{
-		T_Type typeToSave = repository.save(newType);
+		try
+		{
+			T_Type typeToSave = repository.save(newType);
+			
+			Type_Dto typeDto = new Type_Dto(typeToSave);
+			
+			return typeDto;			
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace(); // Muestro por consola la pila detallada de errores.
+		}
 		
-		Type_Dto typeDto = new Type_Dto(typeToSave);
-		
-		return typeDto;
+		return null;
 	}
 
 	@Override
@@ -47,28 +56,45 @@ public class Type_Service implements Base_ServiceInterface<T_Type, Type_Dto>
 	@Override
 	public Type_Dto readBaseId(Long id) 
 	{
-		T_Type typeToRead = repository.getReferenceById(id);
+		try
+		{
+			T_Type typeToRead = repository.getReferenceById(id);
+			
+			Type_Dto typeDto = new Type_Dto(typeToRead);
+			
+			return typeDto;			
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace(); // Muestro por consola la pila detallada de errores.
+		}
 		
-		Type_Dto typeDto = new Type_Dto(typeToRead);
-		
-		return typeDto;
+		return null;
 	}
 
 	@Override
 	public Type_Dto updateBase(T_Type type) 
 	{
-		T_Type typeToUpdate = repository.getReferenceById(type.getId());
-		typeToUpdate.setAll
+		try
+		{
+			T_Type typeToUpdate = repository.getReferenceById(type.getId());
+			typeToUpdate.setAll
 			(
-				type.getName(), 
-				type.getDescription()
-			);
-		typeToUpdate = repository.save(typeToUpdate);
+					type.getName(), 
+					type.getDescription()
+					);
+			typeToUpdate = repository.save(typeToUpdate);
+			
+			Type_Dto typeDto = new Type_Dto(typeToUpdate);
+			
+			return typeDto;			
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace(); // Muestro por consola la pila detallada de errores.
+		}
 		
-		Type_Dto typeDto = new Type_Dto(typeToUpdate);
-		
-		return typeDto;
-		
+		return null;
 	}
 
 	@Override
@@ -83,10 +109,10 @@ public class Type_Service implements Base_ServiceInterface<T_Type, Type_Dto>
 		}
 		catch (Exception e)
 		{
-			return null;
+			return typeToDelete;
 		}
 		
-		return typeToDelete;
+		return null;
 	}
 
 	@Override

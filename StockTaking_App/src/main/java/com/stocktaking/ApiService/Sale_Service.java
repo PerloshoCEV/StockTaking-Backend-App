@@ -21,11 +21,20 @@ public class Sale_Service implements Base_ServiceInterface<T_Sale, Sale_Dto>
 	@Override
 	public Sale_Dto createBaseService(T_Sale newSale) 
 	{
-		T_Sale saleToSave = repository.save(newSale);
+		try
+		{
+			T_Sale saleToSave = repository.save(newSale);
+			
+			Sale_Dto saleDto = new Sale_Dto(saleToSave);
+			
+			return saleDto;			
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace(); // Muestro por consola la pila detallada de errores.
+		}
 		
-		Sale_Dto saleDto = new Sale_Dto(saleToSave);
-		
-		return saleDto;
+		return null;
 	}
 
 	@Override
@@ -47,27 +56,44 @@ public class Sale_Service implements Base_ServiceInterface<T_Sale, Sale_Dto>
 	@Override
 	public Sale_Dto readBaseId(Long id) 
 	{
-		T_Sale saleToRead = repository.getReferenceById(id);
+		try
+		{
+			T_Sale saleToRead = repository.getReferenceById(id);
+			
+			Sale_Dto saleDto = new Sale_Dto(saleToRead);
+			
+			return saleDto;			
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace(); // Muestro por consola la pila detallada de errores.
+		}
 		
-		Sale_Dto saleDto = new Sale_Dto(saleToRead);
-		
-		return saleDto;
+		return null;
 	}
 
 	@Override
 	public Sale_Dto updateBase(T_Sale sale) 
 	{
-		T_Sale saleToUpdate = repository.getReferenceById(sale.getId());
-		saleToUpdate.setDate
+		try
+		{
+			T_Sale saleToUpdate = repository.getReferenceById(sale.getId());
+			saleToUpdate.setDate
 			(
-				sale.getDate()
-			);
-		saleToUpdate = repository.save(saleToUpdate);
+					sale.getDate()
+					);
+			saleToUpdate = repository.save(saleToUpdate);
+			
+			Sale_Dto saleDto = new Sale_Dto(saleToUpdate);
+			
+			return saleDto;			
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace(); // Muestro por consola la pila detallada de errores.
+		}
 		
-		Sale_Dto saleDto = new Sale_Dto(saleToUpdate);
-		
-		return saleDto;
-		
+		return null;
 	}
 
 	@Override
@@ -82,10 +108,10 @@ public class Sale_Service implements Base_ServiceInterface<T_Sale, Sale_Dto>
 		}
 		catch (Exception e)
 		{
-			return null;
+			return saleToDelete;
 		}
 		
-		return saleToDelete;
+		return null;
 	}
 
 	@Override

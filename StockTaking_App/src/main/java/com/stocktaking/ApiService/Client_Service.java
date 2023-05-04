@@ -21,11 +21,21 @@ public class Client_Service implements Base_ServiceInterface<T_Client, Client_Dt
 	@Override
 	public Client_Dto createBaseService(T_Client newClient) 
 	{
-		T_Client clientToSave = repository.save(newClient);
+		try
+		{
+			T_Client clientToSave = repository.save(newClient);
+			
+			Client_Dto clientDto = new Client_Dto(clientToSave);
+			
+			return clientDto;
+			
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace(); // Muestro por consola la pila detallada de errores.
+		}
 		
-		Client_Dto clientDto = new Client_Dto(clientToSave);
-		
-		return clientDto;
+		return null;
 	}
 
 	@Override
@@ -47,29 +57,48 @@ public class Client_Service implements Base_ServiceInterface<T_Client, Client_Dt
 	@Override
 	public Client_Dto readBaseId(Long id) 
 	{
-		T_Client clientToRead = repository.getReferenceById(id);
+		try
+		{
+			T_Client clientToRead = repository.getReferenceById(id);
+			
+			Client_Dto clientDto = new Client_Dto(clientToRead);
+			
+			return clientDto;
+			
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace(); // Muestro por consola la pila detallada de errores.
+		}
 		
-		Client_Dto clientDto = new Client_Dto(clientToRead);
-		
-		return clientDto;
+		return null;
 	}
 
 	@Override
 	public Client_Dto updateBase(T_Client client) 
 	{
-		T_Client clientToUpdate = repository.getReferenceById(client.getId());
-		clientToUpdate.setAll
+		try
+		{
+			T_Client clientToUpdate = repository.getReferenceById(client.getId());
+			clientToUpdate.setAll
 			(
-				client.getName(), 
-				client.getLastName(),
-				client.getSecondLastName(),
-				client.getAge()
-			);
-		clientToUpdate = repository.save(clientToUpdate);
+					client.getName(), 
+					client.getLastName(),
+					client.getSecondLastName(),
+					client.getAge()
+					);
+			clientToUpdate = repository.save(clientToUpdate);
+			
+			Client_Dto clientDto = new Client_Dto(clientToUpdate);
+			
+			return clientDto;			
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace(); // Muestro por consola la pila detallada de errores.
+		}
 		
-		Client_Dto clientDto = new Client_Dto(clientToUpdate);
-		
-		return clientDto;
+		return null;
 		
 	}
 
@@ -85,10 +114,10 @@ public class Client_Service implements Base_ServiceInterface<T_Client, Client_Dt
 		}
 		catch (Exception e)
 		{
-			return null;
+			return clientToDelete;
 		}
 		
-		return clientToDelete;
+		return null;
 	}
 
 	@Override

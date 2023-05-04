@@ -21,11 +21,20 @@ public class Supplier_Service implements Base_ServiceInterface<T_Supplier, Suppl
 	@Override
 	public Supplier_Dto createBaseService(T_Supplier newSupplier) 
 	{
-		T_Supplier supplierToSave = repository.save(newSupplier);
+		try
+		{
+			T_Supplier supplierToSave = repository.save(newSupplier);
+			
+			Supplier_Dto supplierDto = new Supplier_Dto(supplierToSave);
+			
+			return supplierDto;			
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace(); // Muestro por consola la pila detallada de errores.
+		}
 		
-		Supplier_Dto supplierDto = new Supplier_Dto(supplierToSave);
-		
-		return supplierDto;
+		return null;
 	}
 
 	@Override
@@ -47,29 +56,47 @@ public class Supplier_Service implements Base_ServiceInterface<T_Supplier, Suppl
 	@Override
 	public Supplier_Dto readBaseId(Long id) 
 	{
-		T_Supplier supplierToRead = repository.getReferenceById(id);
+		try
+		{
+			T_Supplier supplierToRead = repository.getReferenceById(id);
+			
+			Supplier_Dto supplierDto = new Supplier_Dto(supplierToRead);
+			
+			return supplierDto;			
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace(); // Muestro por consola la pila detallada de errores.
+		}
 		
-		Supplier_Dto supplierDto = new Supplier_Dto(supplierToRead);
-		
-		return supplierDto;
+		return null;
 	}
 
 	@Override
 	public Supplier_Dto updateBase(T_Supplier supplier) 
 	{
-		T_Supplier supplierToUpdate = repository.getReferenceById(supplier.getId());
-		supplierToUpdate.setAll
+		try
+		{
+			T_Supplier supplierToUpdate = repository.getReferenceById(supplier.getId());
+			supplierToUpdate.setAll
 			(
-				supplier.getName(), 
-				supplier.getEmail(),
-				supplier.getAddress(),
-				supplier.getDescription()
-			);
-		supplierToUpdate = repository.save(supplierToUpdate);
+					supplier.getName(), 
+					supplier.getEmail(),
+					supplier.getAddress(),
+					supplier.getDescription()
+					);
+			supplierToUpdate = repository.save(supplierToUpdate);
+			
+			Supplier_Dto supplierDto = new Supplier_Dto(supplierToUpdate);
+			
+			return supplierDto;			
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace(); // Muestro por consola la pila detallada de errores.
+		}
 		
-		Supplier_Dto supplierDto = new Supplier_Dto(supplierToUpdate);
-		
-		return supplierDto;
+		return null;
 		
 	}
 
@@ -85,10 +112,10 @@ public class Supplier_Service implements Base_ServiceInterface<T_Supplier, Suppl
 		}
 		catch (Exception e)
 		{
-			return null;
+			return supplierToDelete;
 		}
 		
-		return supplierToDelete;
+		return null;
 	}
 
 	@Override

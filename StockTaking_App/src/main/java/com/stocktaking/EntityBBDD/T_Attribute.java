@@ -114,13 +114,13 @@ public class T_Attribute
 		return types;
 	}
 	
-	
-	
-	public Type_TypeValue getValueType() {
+	public Type_TypeValue getValueType() 
+	{
 		return valueType;
 	}
 
-	public void setValueType(Type_TypeValue valueType) {
+	public void setValueType(Type_TypeValue valueType) 
+	{
 		this.valueType = valueType;
 	}
 

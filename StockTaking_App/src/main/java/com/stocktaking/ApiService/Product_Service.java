@@ -21,11 +21,20 @@ public class Product_Service implements Base_ServiceInterface<T_Product, Product
 	@Override
 	public Product_Dto createBaseService(T_Product newProduct) 
 	{
-		T_Product productToSave = repository.save(newProduct);
+		try
+		{
+			T_Product productToSave = repository.save(newProduct);
+			
+			Product_Dto productDto = new Product_Dto(productToSave);
+			
+			return productDto;			
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace(); // Muestro por consola la pila detallada de errores.
+		}
 		
-		Product_Dto productDto = new Product_Dto(productToSave);
-		
-		return productDto;
+		return null;
 	}
 
 	@Override
@@ -41,35 +50,51 @@ public class Product_Service implements Base_ServiceInterface<T_Product, Product
 		}
 		
 		return listProductsDto;
-		
 	}
 
 	@Override
 	public Product_Dto readBaseId(Long id) 
 	{
-		T_Product productToRead = repository.getReferenceById(id);
+		try
+		{
+			T_Product productToRead = repository.getReferenceById(id);
+			
+			Product_Dto productDto = new Product_Dto(productToRead);
+			
+			return productDto;			
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace(); // Muestro por consola la pila detallada de errores.
+		}
 		
-		Product_Dto productDto = new Product_Dto(productToRead);
-		
-		return productDto;
+		return null;
 	}
 
 	@Override
 	public Product_Dto updateBase(T_Product product) 
 	{
-		T_Product productToUpdate = repository.getReferenceById(product.getId());
-		productToUpdate.setAll
+		try
+		{
+			T_Product productToUpdate = repository.getReferenceById(product.getId());
+			productToUpdate.setAll
 			(
-				product.getName(), 
-				product.getDescription(),
-				product.getStock()
-			);
-		productToUpdate = repository.save(productToUpdate);
+					product.getName(), 
+					product.getDescription(),
+					product.getStock()
+					);
+			productToUpdate = repository.save(productToUpdate);
+			
+			Product_Dto productDto = new Product_Dto(productToUpdate);
+			
+			return productDto;			
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace(); // Muestro por consola la pila detallada de errores.
+		}
 		
-		Product_Dto productDto = new Product_Dto(productToUpdate);
-		
-		return productDto;
-		
+		return null;
 	}
 
 	@Override
@@ -84,10 +109,10 @@ public class Product_Service implements Base_ServiceInterface<T_Product, Product
 		}
 		catch (Exception e)
 		{
-			return null;
+			return productToDelete;
 		}
 		
-		return productToDelete;
+		return null;
 	}
 
 	@Override

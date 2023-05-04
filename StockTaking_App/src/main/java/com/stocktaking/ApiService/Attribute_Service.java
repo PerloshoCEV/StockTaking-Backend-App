@@ -21,11 +21,21 @@ public class Attribute_Service implements Base_ServiceInterface<T_Attribute, Att
 	@Override
 	public Attribute_Dto createBaseService(T_Attribute newAttribute) 
 	{
-		T_Attribute attributeToSave = repository.save(newAttribute);
+		try
+		{
+			T_Attribute attributeToSave = repository.save(newAttribute);
 		
-		Attribute_Dto attributeDto = new Attribute_Dto(attributeToSave);
+			Attribute_Dto attributeDto = new Attribute_Dto(attributeToSave);
+			
+			return attributeDto;
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace(); // Muestro por consola la pila detallada de errores.
+		}
 		
-		return attributeDto;
+		return null;
+		
 	}
 
 	@Override
@@ -47,27 +57,44 @@ public class Attribute_Service implements Base_ServiceInterface<T_Attribute, Att
 	@Override
 	public Attribute_Dto readBaseId(Long id) 
 	{
-		T_Attribute attributeToRead = repository.getReferenceById(id);
+		try
+		{
+			T_Attribute attributeToRead = repository.getReferenceById(id);
+			
+			Attribute_Dto attributeDto = new Attribute_Dto(attributeToRead);
+			
+			return attributeDto;			
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace(); // Muestro por consola la pila detallada de errores.
+		}
 		
-		Attribute_Dto attributeDto = new Attribute_Dto(attributeToRead);
-		
-		return attributeDto;
+		return null;
 	}
 
 	@Override
 	public Attribute_Dto updateBase(T_Attribute attribute) 
 	{
-		T_Attribute attributeToUpdate = repository.getReferenceById(attribute.getId());
-		attributeToUpdate.setAll
-			(
-				attribute.getName(), 
-				attribute.getDescription()
-			);
-		attributeToUpdate = repository.save(attributeToUpdate);
+		try
+		{
+			T_Attribute attributeToUpdate = repository.getReferenceById(attribute.getId());
+			attributeToUpdate.setAll
+				(
+					attribute.getName(), 
+					attribute.getDescription()
+				);
+			attributeToUpdate = repository.save(attributeToUpdate);
+			
+			Attribute_Dto attributeDto = new Attribute_Dto(attributeToUpdate);
+			return attributeDto;
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace(); // Muestro por consola la pila detallada de errores.
+		}
 		
-		Attribute_Dto attributeDto = new Attribute_Dto(attributeToUpdate);
-		
-		return attributeDto;
+		return null;
 		
 	}
 
@@ -83,10 +110,10 @@ public class Attribute_Service implements Base_ServiceInterface<T_Attribute, Att
 		}
 		catch (Exception e)
 		{
-			return null;
+			e.printStackTrace(); // Muestro por consola la pila detallada de errores.
 		}
 		
-		return attributeToDelete;
+		return null;
 	}
 
 	@Override
