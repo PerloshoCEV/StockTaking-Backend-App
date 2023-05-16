@@ -7,14 +7,17 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.stocktaking.ApiControllerInterface.Product_ControllerInterface;
+import com.stocktaking.ApiRepository.DynamicRepository;
 import com.stocktaking.ApiService.Product_Service;
 import com.stocktaking.EntityBBDD.T_Product;
 import com.stocktaking.Entity_DTO.Product_Dto;
 import com.stocktaking.Enum.MessageResult;
 import com.stocktaking.Response.ApiResponse;
+import com.stocktaking.Response.RegDynamicResponse;
 import com.stocktaking.Response.Metadata;
 
 @RestController
@@ -116,6 +119,23 @@ public class Product_Controller implements Product_ControllerInterface
 				response.setMessage(MessageResult.Success);
 			}
 		}
+		return response;
+	}
+	
+	@GetMapping(path = "/productAttributes")
+	public ApiResponse<RegDynamicResponse> readproductAttribute(@RequestParam Long id) 
+	{
+		Metadata meta = new Metadata();
+		
+		ApiResponse<RegDynamicResponse> response = new ApiResponse<RegDynamicResponse>(meta);
+
+		response.setResponse(productService.readProductAttributes(id));
+
+		if (response.getResponse() != null)
+		{
+			response.setMessage(MessageResult.Success);
+		}
+		
 		return response;
 	}
 }

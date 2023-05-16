@@ -2,12 +2,16 @@ package com.stocktaking.EntityBBDD;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+
 import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;
+import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.MapsId;
-
+import jakarta.persistence.Table;
+@Entity // Spring le dice al Gestor de Bases de Datos que la siguiente clase es una entidad (Tabla).
+@Table(name = "T_Product_Attribute")
 public class T_ProductAttribute 
 {
 	/*
@@ -26,8 +30,8 @@ public class T_ProductAttribute
 	@MapsId("attributeId")
 	private T_Attribute attribute;
 	
-	@Column(name = "Value")
-	private String value;
+	@Column(name = "ValueAttr")
+	private String valueAttr;
 
 	/*
 		Zona de Constructores
@@ -38,21 +42,27 @@ public class T_ProductAttribute
 
 	}
 	
-	public T_ProductAttribute(T_Product product, T_Attribute attribute, String value) 
+	public T_ProductAttribute(T_Product product, T_Attribute attribute, String valueAttr) 
 	{
 		super();
 		this.product = product;
 		this.attribute = attribute;
-		this.value = value;
+		this.valueAttr = valueAttr;
 	}
 	
-	public T_ProductAttribute(EmbKey_ProductAttribute id, T_Product product, T_Attribute attribute, String value) 
+	public T_ProductAttribute
+	(
+		EmbKey_ProductAttribute id, 
+		T_Product product, 
+		T_Attribute attribute, 
+		String valueAttr
+	) 
 	{
 		super();
 		this.id = id;
 		this.product = product;
 		this.attribute = attribute;
-		this.value = value;
+		this.valueAttr = valueAttr;
 	}
 
 	/*
@@ -88,13 +98,13 @@ public class T_ProductAttribute
 		this.attribute = attribute;
 	}
 
-	public String getValue() 
+	public String getValueAttr() 
 	{
-		return value;
+		return valueAttr;
 	}
 
-	public void setValue(String value) 
+	public void setValueAttr(String valueAttr) 
 	{
-		this.value = value;
+		this.valueAttr = valueAttr;
 	}
 }

@@ -7,16 +7,22 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.stocktaking.ApiRepository.DynamicRepository;
 import com.stocktaking.ApiRepository.Product_Repository;
 import com.stocktaking.ApiServiceInterface.Base_ServiceInterface;
 import com.stocktaking.EntityBBDD.T_Product;
 import com.stocktaking.Entity_DTO.Product_Dto;
+import com.stocktaking.Response.RegDynamicResponse;
 
 @Service
 public class Product_Service implements Base_ServiceInterface<T_Product, Product_Dto>
 {
 	@Autowired
 	Product_Repository repository;
+	
+	@Autowired
+	DynamicRepository dynamicRepository;
+	
 	
 	@Override
 	public Product_Dto createBaseService(T_Product newProduct) 
@@ -126,5 +132,14 @@ public class Product_Service implements Base_ServiceInterface<T_Product, Product
 		}
 		
 		return productDto;
+	}
+	
+	public RegDynamicResponse readProductAttributes (Long Id)
+	{
+		if (this.findBaseByIdService(Id) != null)
+		{
+			return dynamicRepository.getProductById(Id);			
+		}
+		return null;
 	}
 }

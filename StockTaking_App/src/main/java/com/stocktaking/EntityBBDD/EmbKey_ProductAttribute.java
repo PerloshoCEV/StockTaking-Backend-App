@@ -25,12 +25,10 @@ public class EmbKey_ProductAttribute implements Serializable
 	*/
 	public EmbKey_ProductAttribute() 
 	{
-		super();
 	}
 	
 	public EmbKey_ProductAttribute(Long productId, Long attributeId) 
 	{
-		super();
 		this.productId = productId;
 		this.attributeId = attributeId;
 	}

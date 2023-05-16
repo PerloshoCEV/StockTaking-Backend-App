@@ -1,0 +1,28 @@
+SELECT
+    T_Campo.nombreCampo,
+    MAX(CASE WHEN T_Valores.idCampo = 1 THEN T_Valores.valor END) AS valor1,
+    MAX(CASE WHEN T_Valores.idCampo = 2 THEN T_Valores.valor END) AS valor2,
+    ...
+FROM
+    T_Tipo
+    JOIN T_Campo ON T_Tipo.id = T_Campo.idTipo
+    JOIN T_MiObjeto ON T_Tipo.id = T_MiObjeto.idTipo
+    LEFT JOIN T_Valores ON T_MiObjeto.id = T_Valores.idMiObjeto AND T_Campo.id = T_Valores.idCampo
+WHERE
+    T_MiObjeto.id = <id del objeto que quieres consultar>
+GROUP BY
+    T_Campo.id
+
+
+
+
+
+
+
+
+
+SELECT p.ID, p.DESCRIPTION, p.NAME, p.STOCK, a.NAME, pa.VALUE_ATTR
+FROM T_PRODUCT p
+JOIN T_PRODUCT_ATTRIBUTE pa ON p.ID = pa.PRODUCT_ID
+JOIN T_ATTRIBUTE a ON pa.ATTRIBUTE_ID = a.ID
+WHERE p.ID = 3;

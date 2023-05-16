@@ -79,7 +79,7 @@ public class ProductAttribute_Dto implements MapperInterface<T_ProductAttribute>
 		{
 			this.productId = entity.getId().getProductId();
 			this.attributeId = entity.getId().getAttributeId();
-			this.value = entity.getValue();
+			this.value = entity.getValueAttr();
 		}
 		catch (Exception e)
 		{
