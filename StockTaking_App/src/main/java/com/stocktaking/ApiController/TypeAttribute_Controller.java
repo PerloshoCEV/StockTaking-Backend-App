@@ -37,16 +37,16 @@ public class TypeAttribute_Controller implements TypeAttribute_ControllerInterfa
 		return null;
 	}
 
+
 	@Override
-	@PutMapping(path = "/typeattribute")
-	public ApiResponse<TypeAttribute_Dto> Update(TypeAttribute_Dto entity) {
+	@DeleteMapping(path = "/typeattribute")
+	public ApiResponse<TypeAttribute_Dto> Delete(TypeAttribute_Dto entity) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	@DeleteMapping(path = "/typeattribute")
-	public ApiResponse<TypeAttribute_Dto> Delete(TypeAttribute_Dto entity) {
+	public ApiResponse<TypeAttribute_Dto> Update(TypeAttribute_Dto entity) {
 		// TODO Auto-generated method stub
 		return null;
 	}

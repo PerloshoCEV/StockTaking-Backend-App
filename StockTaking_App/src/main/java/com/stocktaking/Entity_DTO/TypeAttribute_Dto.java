@@ -56,6 +56,13 @@ public class TypeAttribute_Dto implements MapperInterface<T_TypeAttribute>
 		this.attributeId = attributeId;
 	}
 
+	public void setAll(Long attributeId, Long typeId) 
+	{
+		this.attributeId = attributeId;
+		this.typeId = typeId;
+	}
+	
+
 	/*
 		Zona de Implementaciones de interfaces
 	*/
