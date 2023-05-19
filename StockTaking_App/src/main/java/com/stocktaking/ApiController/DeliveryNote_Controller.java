@@ -2,6 +2,10 @@ package com.stocktaking.ApiController;
 
 import java.util.List;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.stocktaking.ApiControllerInterface.DeliveryNote_ControllerInterface;
@@ -13,31 +17,41 @@ public class DeliveryNote_Controller implements DeliveryNote_ControllerInterface
 {
 
 	@Override
-	public ApiResponse<DeliveryNote_Dto> create(DeliveryNote_Dto entity) {
+	@PostMapping(path = "/deliverynote")
+	public ApiResponse<DeliveryNote_Dto> create(DeliveryNote_Dto entity) 
+	{
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ApiResponse<List<DeliveryNote_Dto>> readAll() {
+	@GetMapping(path = "/alldeliverynotes")
+	public ApiResponse<List<DeliveryNote_Dto>> readAll() 
+	{
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ApiResponse<DeliveryNote_Dto> readOne(DeliveryNote_Dto entity) {
+	@GetMapping(path = "/deliverynote")
+	public ApiResponse<DeliveryNote_Dto> readOne(DeliveryNote_Dto entity) 
+	{
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ApiResponse<DeliveryNote_Dto> Update(DeliveryNote_Dto entity) {
+	@PutMapping(path = "/deliverynote")
+	public ApiResponse<DeliveryNote_Dto> Update(DeliveryNote_Dto entity) 
+	{
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ApiResponse<DeliveryNote_Dto> Delete(DeliveryNote_Dto entity) {
+	@DeleteMapping(path = "/deliverynote")
+	public ApiResponse<DeliveryNote_Dto> Delete(DeliveryNote_Dto entity) 
+	{
 		// TODO Auto-generated method stub
 		return null;
 	}

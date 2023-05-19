@@ -52,7 +52,7 @@ public class Delivery_Controller implements Delivery_ControllerInterface
 	}
 
 	@Override
-	@GetMapping(path = "/alldeliverys")
+	@GetMapping(path = "/alldeliveries")
 	public ApiResponse<List<Delivery_Dto>> readAllEntityController() 
 	{
 		Metadata meta = new Metadata();
