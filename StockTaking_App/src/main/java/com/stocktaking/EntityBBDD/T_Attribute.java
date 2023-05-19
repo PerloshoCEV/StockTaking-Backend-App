@@ -27,7 +27,6 @@ public class T_Attribute
 	Long id; // Variable - Atributo / Campo -> id (Primary Key).
 	
 	// Spring JPA le dice al Gestor de Bases de Datos que la siguiente variable Java será un Atributo / Campo de la entidad.
-	@NaturalId
 	@Column (name = "Name", unique = true, nullable = false)
 	String name;
 	
