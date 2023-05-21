@@ -9,9 +9,8 @@ public class DeliveryNote_Dto implements MapperInterface<T_DeliveryNote>
 		Zona de Atributos
 	*/
 	private Long deliveryId;
-	private Long producId;
+	private Long productId;
 	private Long supplierId;
-	
 	private Integer quantity;
 
 	/*
@@ -29,13 +28,13 @@ public class DeliveryNote_Dto implements MapperInterface<T_DeliveryNote>
 	public DeliveryNote_Dto
 	(
 		Long deliveryId, 
-		Long producId, 
+		Long productId, 
 		Long supplierId, 
 		Integer quantity
 	) 
 	{
 		this.deliveryId = deliveryId;
-		this.producId = producId;
+		this.productId = productId;
 		this.supplierId = supplierId;
 		this.quantity = quantity;
 	}
@@ -53,14 +52,14 @@ public class DeliveryNote_Dto implements MapperInterface<T_DeliveryNote>
 		this.deliveryId = deliveryId;
 	}
 
-	public Long getProducId() 
+	public Long getProductId() 
 	{
-		return producId;
+		return productId;
 	}
 
-	public void setProducId(Long producId) 
+	public void setProductId(Long productId) 
 	{
-		this.producId = producId;
+		this.productId = productId;
 	}
 
 	public Long getSupplierId() 
@@ -91,7 +90,7 @@ public class DeliveryNote_Dto implements MapperInterface<T_DeliveryNote>
 		try 
 		{
 			this.deliveryId = entity.getId().getDeliveryId();
-			this.producId = entity.getId().getProductId();
+			this.productId = entity.getId().getProductId();
 			this.supplierId = entity.getId().getSupplierId();
 			this.quantity = entity.getQuantity();
 		}
