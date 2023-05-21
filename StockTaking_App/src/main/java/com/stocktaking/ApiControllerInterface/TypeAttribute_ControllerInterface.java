@@ -13,7 +13,7 @@ import com.stocktaking.Response.ApiResponse;
 public interface TypeAttribute_ControllerInterface
 {
 	ApiResponse<TypeAttribute_Dto> create(@RequestBody TypeAttribute_Dto entity);
-	ApiResponse<List<TypeAttribute_Dto>> readAll(@RequestParam Long typeId, @RequestParam Long attibuteId);
+	ApiResponse<List<TypeAttribute_Dto>> readAll(@RequestBody TypeAttribute_Dto entity);
 	ApiResponse<TypeAttribute_Dto> readOne(@RequestBody TypeAttribute_Dto entity);
 	ApiResponse<TypeAttribute_Dto> Update(@RequestBody TypeAttribute_Dto entity);
 	ApiResponse<TypeAttribute_Dto> Delete(@RequestBody TypeAttribute_Dto entity);

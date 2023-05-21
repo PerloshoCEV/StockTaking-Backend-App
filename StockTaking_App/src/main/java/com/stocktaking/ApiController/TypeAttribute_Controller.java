@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.stocktaking.ApiControllerInterface.TypeAttribute_ControllerInterface;
@@ -37,7 +38,7 @@ public class TypeAttribute_Controller implements TypeAttribute_ControllerInterfa
 		/*
 			Chequeos de valores
 		*/
-		Long typeId = newTypeAttribute.getAttributeId();
+		Long typeId = newTypeAttribute.getTypeId();
 		Long attributeId = newTypeAttribute.getAttributeId();
 		
 		if (checkAllValues(typeId, attributeId))
@@ -53,19 +54,22 @@ public class TypeAttribute_Controller implements TypeAttribute_ControllerInterfa
 
 	@Override
 	@GetMapping(path = "/alltypeattributes")
-	public ApiResponse<List<TypeAttribute_Dto>> readAll(Long typeId, Long attributeId) 
+	public ApiResponse<List<TypeAttribute_Dto>> readAll(TypeAttribute_Dto entity) 
 	{
 		Metadata meta = new Metadata();
 		ApiResponse<List<TypeAttribute_Dto>> response = 
 			new ApiResponse<List<TypeAttribute_Dto>>(meta);
 		
+		Long typeId = entity.getTypeId();
+		Long attributeId = entity.getAttributeId();
+		
 		if (typeId != null && attributeId != null)
 		{
-			response.setResponse(typeAttribute_Service.findAll());
+			response.setResponse(typeAttribute_Service.findOne(typeId, attributeId));
 		}
 		else
 		{
-			if (typeId != null)
+			if (typeId == null)
 			{
 				response.setResponse(typeAttribute_Service.findByTypeId(typeId));
 			}

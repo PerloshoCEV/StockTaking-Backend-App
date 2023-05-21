@@ -1,6 +1,5 @@
 package com.stocktaking.ApiService;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,6 +61,11 @@ public class TypeAttribute_Service
 	public List<TypeAttribute_Dto> findAll() 
 	{
 		return repositorySql.findByAttributeId(null);
+	}
+	
+	public List<TypeAttribute_Dto> findOne(Long typeId, Long attributeId) 
+	{
+		return repositorySql.findOne(typeId, attributeId);
 	}
 	
 }
