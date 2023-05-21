@@ -21,7 +21,7 @@ public class ProductAttribute_Controller implements ProductAttribute_ControllerI
 	DynamicRepository repository;
 
 	@Override
-	@PostMapping(path = "/productatribute")
+	@PostMapping(path = "/productattribute")
 	public ApiResponse<ProductAttribute_Dto> create(ProductAttribute_Dto entity) 
 	{
 		// TODO Auto-generated method stub
@@ -29,7 +29,7 @@ public class ProductAttribute_Controller implements ProductAttribute_ControllerI
 	}
 	
 	@Override
-	@GetMapping(path = "/allproductatribute")
+	@GetMapping(path = "/allproductattribute")
 	public ApiResponse<List<ProductAttribute_Dto>> readAll() 
 	{
 		// TODO Auto-generated method stub
@@ -37,7 +37,7 @@ public class ProductAttribute_Controller implements ProductAttribute_ControllerI
 	}
 
 	@Override
-	@GetMapping(path = "/productatribute")
+	@GetMapping(path = "/productattribute")
 	public ApiResponse<ProductAttribute_Dto> readOne(ProductAttribute_Dto entity) 
 	{
 		// TODO Auto-generated method stub
@@ -45,7 +45,7 @@ public class ProductAttribute_Controller implements ProductAttribute_ControllerI
 	}
 
 	@Override
-	@PutMapping(path = "/productatribute")
+	@PutMapping(path = "/productattribute")
 	public ApiResponse<ProductAttribute_Dto> Update(ProductAttribute_Dto entity) 
 	{
 		// TODO Auto-generated method stub
@@ -53,7 +53,7 @@ public class ProductAttribute_Controller implements ProductAttribute_ControllerI
 	}
 
 	@Override
-	@DeleteMapping(path = "/productatribute")
+	@DeleteMapping(path = "/productattribute")
 	public ApiResponse<ProductAttribute_Dto> Delete(ProductAttribute_Dto entity) 
 	{
 		// TODO Auto-generated method stub

@@ -1,5 +1,8 @@
 package com.stocktaking.ApiService;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -35,5 +38,30 @@ public class TypeAttribute_Service
 	}
 
 
+	/*
+	Método deleteId.
+	*/
+	public TypeAttribute_Dto deleteId(TypeAttribute_Dto deleteEntity) 
+	{
+		return repositorySql.delete(deleteEntity.getTypeId(), deleteEntity.getAttributeId());
+	}
+	
+	/*
+	Método readByTypeId.
+	*/
+	
+	public List<TypeAttribute_Dto> readByTypeId(TypeAttribute_Dto id) 
+	{
+		return repositorySql.findByTypeId(id.getTypeId());
+	}
+	
+	/*
+	Método findByAttributeId.
+	*/
+	
+	public List<TypeAttribute_Dto> findByAttributeId(TypeAttribute_Dto id) 
+	{
+		return repositorySql.findByTypeId(id.getAttributeId());
+	}
 	
 }

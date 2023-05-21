@@ -17,7 +17,7 @@ public class EmbKey_ProductAttribute implements Serializable
 	@Column (name = "Product_ID")
 	private Long productId;
 	
-	@Column (name = "Atrribute_ID")
+	@Column (name = "Attribute_ID")
 	private Long attributeId;
 
 	/*

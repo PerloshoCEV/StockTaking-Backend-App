@@ -68,6 +68,14 @@ public class ProductAttribute_Dto implements MapperInterface<T_ProductAttribute>
 	{
 		this.value = value;
 	}
+	
+	public void setAll(Long productId, Long attributeId, String value) 
+	{
+		this.productId = productId;
+		this.attributeId = attributeId;
+		this.value = value;
+	}
+	
 
 	/*
 		Zona de Implementaciones de interfaces
