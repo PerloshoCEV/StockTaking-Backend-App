@@ -14,10 +14,9 @@ import com.stocktaking.Entity_DTO.TypeAttribute_Dto;
 @Service
 public class TypeAttribute_Service 
 {
-
-
 	@Autowired
 	TypeAttribute_Repository repositorySql;
+	
 	
 	/*
 		Método CreateService.
@@ -47,21 +46,22 @@ public class TypeAttribute_Service
 	}
 	
 	/*
-	Método readByTypeId.
+	Método findBy
 	*/
 	
-	public List<TypeAttribute_Dto> readByTypeId(TypeAttribute_Dto id) 
+	public List<TypeAttribute_Dto> findByTypeId(Long id) 
 	{
-		return repositorySql.findByTypeId(id.getTypeId());
+		return repositorySql.findByTypeId(id);
 	}
 	
-	/*
-	Método findByAttributeId.
-	*/
-	
-	public List<TypeAttribute_Dto> findByAttributeId(TypeAttribute_Dto id) 
+	public List<TypeAttribute_Dto> findByAttributeId(Long id) 
 	{
-		return repositorySql.findByTypeId(id.getAttributeId());
+		return repositorySql.findByAttributeId(id);
+	}
+	
+	public List<TypeAttribute_Dto> findAll() 
+	{
+		return repositorySql.findByAttributeId(null);
 	}
 	
 }
