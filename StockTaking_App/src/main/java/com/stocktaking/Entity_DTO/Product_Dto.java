@@ -13,7 +13,7 @@ public class Product_Dto implements MapperInterface<T_Product>
 	private String name;
 	private String description;
 	private Integer stock;
-	private Long typeId;
+	private T_Type type;
 	
 	/*
 		Zona de Constructores
@@ -29,7 +29,7 @@ public class Product_Dto implements MapperInterface<T_Product>
 		this.name = name;
 		this.description = description;
 		this.stock = stock;
-		this.typeId = type.getId();
+		this.type = type;
 	}
 	
 	public Product_Dto(T_Product entity) 
@@ -79,14 +79,14 @@ public class Product_Dto implements MapperInterface<T_Product>
 		this.stock = stock;
 	}
 
-	public Long getTypeId() 
+	public T_Type getType() 
 	{
-		return typeId;
+		return type;
 	}
 
-	public void setTypeId(T_Type type) 
+	public void setType(T_Type type) 
 	{
-		this.typeId = type.getId();
+		this.type = type;
 	}
 
 	/*
@@ -101,7 +101,7 @@ public class Product_Dto implements MapperInterface<T_Product>
 			this.name = entity.getName();
 			this.description = entity.getDescription();
 			this.stock = entity.getStock();
-			this.typeId = entity.getType().getId();
+			this.type = entity.getType();
 		}
 		catch (Exception e)
 		{

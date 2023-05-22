@@ -63,20 +63,35 @@ public class TypeAttribute_Controller implements TypeAttribute_ControllerInterfa
 		Long typeId = entity.getTypeId();
 		Long attributeId = entity.getAttributeId();
 		
+		//¿Han llegado los dos ID relacionados?
 		if (typeId != null && attributeId != null)
 		{
+			// Busco el registro por ambos ID
 			response.setResponse(typeAttribute_Service.findOne(typeId, attributeId));
 		}
-		else
+		else // No han llegado los dos registros relacionados.
 		{
-			if (typeId == null)
+			// ¿Faltan ambos ID?
+			if (typeId == null && attributeId == null) 
 			{
-				response.setResponse(typeAttribute_Service.findByTypeId(typeId));
+				// Busco todos los registros
+				response.setResponse(typeAttribute_Service.findAll());
 			}
-			
-			if (attributeId != null)
-			{
-				response.setResponse(typeAttribute_Service.findByAttributeId(attributeId));
+			else // No han llegado ambos, tampoco faltan ambos
+			{				
+				// ¿el que ha llegado es el de Type?
+				if (typeId != null)
+				{
+					// Busco por Type
+					response.setResponse(typeAttribute_Service.findByTypeId(typeId));
+				}
+				
+				// ¿El que ha llegado es el de attribute?
+				if (attributeId != null)
+				{
+					// Busco por attribute
+					response.setResponse(typeAttribute_Service.findByAttributeId(attributeId));
+				}
 			}
 		}
 		
