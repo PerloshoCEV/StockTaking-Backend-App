@@ -13,6 +13,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import com.stocktaking.Entity_DTO.Bill_Dto;
+import com.stocktaking.Entity_DTO.TypeAttribute_Dto;
 
 @Configuration
 @EnableWebMvc
@@ -257,7 +258,88 @@ public List<Bill_Dto> findByClientId(Long clientId)
     return listBill_Dto;
 }
 
+/*
+Método para la consultar Todos
+"SELECT * " +
+"FROM T_TYPEATTRIBUTE "
+*/
+public List<Bill_Dto> findOne(Long saleId, Long productId, Long clientId, Integer quantity) 
+{
+	List<Bill_Dto> bill_Dto = new ArrayList<Bill_Dto>();
+	
+	
+	// Intentamos: (Realizamos la conexión con la BBDD [url BBD, UsuarioBBDD, ContraseñaBBDD]):
+	// Todas esas configuraciones las pilla directamente del application.properties
+    try (Connection connection = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) 
+    {
+    	// El String SQL: Usamos values ? para que se inserten por parámetros 
+		// En vez de por concatenación, por seguridad de SQL-injection.
+        String sql = 
+        		"SELECT * " +
+        		"FROM T_BILL;" +
+        		"WHERE SALE_ID = ? AND PRODUCT_ID = ? AND CLIENT_ID = ? AND QUANTITY = ?";
+        
+        PreparedStatement statement = connection.prepareStatement(sql); // Preparamos el comando
+        //a continuación, los parámetros:
+        statement.setLong(1, saleId);
+        statement.setLong(2, productId);
+        statement.setLong(3, clientId);
+        statement.setLong(4, quantity);
+
+        // Almacenamos el resultado en resultSet
+        ResultSet resultSet = statement.executeQuery();
+        // Si podemos posicionarnos en e	l siguiente registro, empezando desde el principio (Primer registro)
+        while (resultSet.next()) 
+        {      
+        	bill_Dto.add(new Bill_Dto(resultSet.getLong("Sale_ID"),resultSet.getLong("Product_ID"),resultSet.getLong("Client_ID"),resultSet.getInt("Quantity")));
+        	
+        }
+    } 
+    catch (Exception e) // Si algo del try falla:
+    {
+        e.printStackTrace(); // Muestro por consola la pila detallada de errores.
+    }
+    return bill_Dto;
+}
 
 
+/*
+Método para la consultar Todos
+"SELECT * " +
+"FROM T_BILL "
+*/
+public List<Bill_Dto> findAll() 
+{
+	List<Bill_Dto> listBill_Dto = new ArrayList<Bill_Dto>();
+	
+	
+	// Intentamos: (Realizamos la conexión con la BBDD [url BBD, UsuarioBBDD, ContraseñaBBDD]):
+	// Todas esas configuraciones las pilla directamente del application.properties
+    try (Connection connection = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) 
+    {
+    	// El String SQL: Usamos values ? para que se inserten por parámetros 
+		// En vez de por concatenación, por seguridad de SQL-injection.
+        String sql = 
+        		"SELECT * " +
+        		"FROM T_BILL;";
+        		
+        
+        PreparedStatement statement = connection.prepareStatement(sql); // Preparamos el comando
+
+        // Almacenamos el resultado en resultSet
+        ResultSet resultSet = statement.executeQuery();
+        // Si podemos posicionarnos en el siguiente registro, empezando desde el principio (Primer registro)
+        while (resultSet.next()) 
+        {      
+        	listBill_Dto.add(new Bill_Dto(resultSet.getLong("Sale_ID"),resultSet.getLong("Product_ID"),resultSet.getLong("Client_ID"),resultSet.getInt("Quantity")));
+        	
+        }
+    } 
+    catch (Exception e) // Si algo del try falla:
+    {
+        e.printStackTrace(); // Muestro por consola la pila detallada de errores.
+    }
+    return listBill_Dto;
+}
 	
 }

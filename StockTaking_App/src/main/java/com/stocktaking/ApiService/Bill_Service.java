@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.stocktaking.ApiRepository.Bill_Repository;
 import com.stocktaking.Entity_DTO.Bill_Dto;
+import com.stocktaking.Entity_DTO.TypeAttribute_Dto;
 
 @Service
 public class Bill_Service 
@@ -47,27 +48,37 @@ public class Bill_Service
 	Método findBySaleId.
 	*/
 	
-	public List<Bill_Dto> readBySaleId(Bill_Dto id) 
+	public List<Bill_Dto> findBySaleId(Long id) 
 	{
-		return repositorySql.findBySaleId(id.getSaleId());
+		return repositorySql.findBySaleId(id);
 	}
 	
 	/*
 	Método findByProductId.	
 	*/
 	
-	public List<Bill_Dto> readByProductId(Bill_Dto id) 
+	public List<Bill_Dto> findByProductId(Long id) 
 	{
-		return repositorySql.findByProductId(id.getProductId());
+		return repositorySql.findByProductId(id);
 	}
 	
 	/*
 	Método findByClientId.
 	*/
 	
-	public List<Bill_Dto> readByClientId(Bill_Dto id) 
+	public List<Bill_Dto> findByClientId(Long id) 
 	{
-		return repositorySql.findByClientId(id.getClientId());
+		return repositorySql.findByClientId(id);
+	}
+	
+	public List<Bill_Dto> findOne(Long saleId, Long productId, Long clientId, Integer quantity) 
+	{
+		return repositorySql.findOne(saleId, productId, clientId, quantity);
+	}
+	
+	public List<Bill_Dto> findAll() 
+	{
+		return repositorySql.findAll();
 	}
 	
 
