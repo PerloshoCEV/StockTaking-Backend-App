@@ -192,28 +192,17 @@ public class Bill_Controller implements Bill_ControllerInterface
 			{
 				return false;
 			}
-		}
-		else
-		{
-			return false;
-		}
-		
-		
-		/* No se evalua el quantity
-		 Compruebo el quantity:
-		  if (quantity != null)
-		{
-			if (bill_Service.findBaseByIdService(quantity) == null)
+			else
 			{
-				return false;
+				return true;
 			}
 		}
 		else
 		{
 			return false;
-		}*/
-		
-		return true;
+		}
+
+
 	}
 
 }

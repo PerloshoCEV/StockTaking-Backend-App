@@ -9,7 +9,9 @@ public class TypeAttribute_Dto implements MapperInterface<T_TypeAttribute>
 		Zona de Atributos
 	*/
 	private Long typeId;
+	private String typeName = "";
 	private Long attributeId;
+	private String attributeName = "";
 	
 	/*
 		Zona de Constructores
@@ -56,10 +58,34 @@ public class TypeAttribute_Dto implements MapperInterface<T_TypeAttribute>
 		this.attributeId = attributeId;
 	}
 
-	public void setAll(Long attributeId, Long typeId) 
+	
+	
+	public String getTypeName() 
+	{
+		return typeName;
+	}
+
+	public void setTypeName(String typeName) 
+	{
+		this.typeName = typeName;
+	}
+
+	public String getAttributeName() 
+	{
+		return attributeName;
+	}
+
+	public void setAttributeName(String attributeName) 
+	{
+		this.attributeName = attributeName;
+	}
+
+	public void setAll(Long attributeId, String attributeName, Long typeId, String typeName) 
 	{
 		this.attributeId = attributeId;
+		this.attributeName = attributeName;
 		this.typeId = typeId;
+		this.typeName = typeName;
 	}
 	
 
@@ -72,7 +98,9 @@ public class TypeAttribute_Dto implements MapperInterface<T_TypeAttribute>
 		try 
 		{
 			this.typeId = entity.getId().getTypeId();
+			this.typeName = entity.getType().getName();
 			this.attributeId = entity.getId().getAttributeId();
+			this.attributeName = entity.getAttribute().getName();
 		}
 		catch (Exception e)
 		{
