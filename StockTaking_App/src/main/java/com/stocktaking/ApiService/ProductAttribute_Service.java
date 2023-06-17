@@ -33,6 +33,21 @@ public class ProductAttribute_Service
 		
 		return ProductAttributeToSave;
 	}
+	
+	public ProductAttribute_Dto updateValueAttribute(Long productId, Long attributeId, String value) 
+	{
+		ProductAttribute_Dto ProductAttributeToSave = null;
+		try
+		{
+			ProductAttributeToSave = repositorySql.update(productId, attributeId, value);
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace(); // Muestro por consola la pila detallada de errores.
+		}
+		
+		return ProductAttributeToSave;
+	}
 
 	
 	/*
@@ -51,6 +66,11 @@ public class ProductAttribute_Service
 	public List<ProductAttribute_Dto> findByAttributeId(ProductAttribute_Dto id) 
 	{
 		return repositorySql.findByAttributeId(id.getAttributeId());
+	}
+	
+	public int countOfAttributeForProduct (Long productId, Long attributeId)
+	{
+		return repositorySql.countOfAttributeForProduct(productId, attributeId);
 	}
 	
 	/*

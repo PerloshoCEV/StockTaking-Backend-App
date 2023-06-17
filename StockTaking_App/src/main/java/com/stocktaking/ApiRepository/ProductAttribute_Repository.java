@@ -48,7 +48,7 @@ public class ProductAttribute_Repository
 				// El String SQL: Usamos values ? para que se inserten por parámetros 
 				// En vez de por concatenación, por seguridad de SQL-injection.
 	          String sql = 
-	          		"INSERT INTO T_PRODUCTATTRIBUTE " +
+	          		"INSERT INTO T_PRODUCT_ATTRIBUTE " +
 	          		"(PRODUCT_ID, ATTRIBUTE_ID, VALUE) " +
 	          		"VALUES (?, ?, ?)";
 	          
@@ -73,54 +73,7 @@ public class ProductAttribute_Repository
 	  }
 
 
-	/*
-	Método para la consulta DELETE:
-	DELETE FROM T_PRODUCTATTRIBUTE  
-	WHERE
-	  	PRODUCT_ID = productId AND
-	  	ATTRIBUTE_ID = attributeId AND
-	  	"VALUE = ? "
-	*/
-	public ProductAttribute_Dto delete(Long productId, Long attributeId, String value) 
-	{
-	// Intentamos: (Realizamos la conexión con la BBDD [url BBD, UsuarioBBDD, ContraseñaBBDD]):
-	// Todas esas configuraciones las pilla directamente del application.properties
-		ProductAttribute_Dto entityToDelete = new ProductAttribute_Dto(productId, attributeId, "", value);
-
-	// Si se ha encontrado el registro:
-	if (entityToDelete != null) 
-	{
-		// El String SQL: Usamos values ? para que se inserten por parámetros 
-		// En vez de por concatenación, por seguridad de SQL-injection.
-		try (Connection connection = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) 
-	    {
-	        String sql = 
-	        		"DELETE FROM T_PRODUCTATTRIBUTE " +
-					"WHERE " +
-	    				"PRODUCT_ID = ? AND " +
-	    				"ATTRIBUTE_ID = ? AND " +
-	    				"VALUE = ? ";
-	        
-	        PreparedStatement statement = connection.prepareStatement(sql); // Preparamos el comando
-	        //a continuación, los parámetros:
-	        statement.setLong(1, productId);
-	        statement.setLong(2, attributeId);
-	        statement.setString(3, value);
-	        
-	        statement.executeUpdate();
-	        // No hace falta if, ya que estamos dentro de un if que compueba si existe.
-	        // devolvemos el registro.
-	        return entityToDelete;
-	    } 
-		catch (Exception e) 
-	    {
-	        e.printStackTrace();
-	    }
-	}
-
-
-	return null;
-	}
+	
 
 
 	/*COMO VERIFICAMOS SUE EXISTENCIA Devolvemos el Dto con la clave pedida (que ya se ha verificado su existencia)
@@ -224,4 +177,138 @@ public class ProductAttribute_Repository
 	    return listProductAttribute_Dto;
 	}
 	
+	
+	/*COMO VERIFICAMOS SUE EXISTENCIA Devolvemos el Dto con la clave pedida (que ya se ha verificado su existencia)
+	Método para la consultar con ProductId:
+	"SELECT * " +
+	"FROM T_PRODUCTATTRIBUTE " +
+	"WHERE PRODUCT_ID = ? "
+	*/
+
+	public int countOfAttributeForProduct (Long productId, Long attributeId) 
+	{
+		List<ProductAttribute_Dto> listProductAttribute_Dto = new ArrayList<ProductAttribute_Dto>();
+		
+		
+		// Intentamos: (Realizamos la conexión con la BBDD [url BBD, UsuarioBBDD, ContraseñaBBDD]):
+		// Todas esas configuraciones las pilla directamente del application.properties
+	    try (Connection connection = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) 
+	    {
+	    	// El String SQL: Usamos values ? para que se inserten por parámetros 
+			// En vez de por concatenación, por seguridad de SQL-injection.
+	        String sql = 
+	        		"SELECT *" +
+	        		"FROM "
+	        			+ "T_PRODUCT_ATTRIBUTE " +
+	        		"WHERE PRODUCT_ID = ? AND ATTRIBUTE_ID = ?";
+	        
+	        PreparedStatement statement = connection.prepareStatement(sql); // Preparamos el comando
+	        //a continuación, los parámetros:
+	        statement.setLong(1, productId);
+	        statement.setLong(2, attributeId);
+	        
+	        // Almacenamos el resultado en resultSet
+	        ResultSet resultSet = statement.executeQuery();
+	        // Si podemos posicionarnos en el siguiente registro, empezando desde el principio (Primer registro)
+	        while (resultSet.next()) 
+	        {      
+	        	listProductAttribute_Dto.add(new ProductAttribute_Dto(resultSet.getLong("Product_ID"),resultSet.getLong("Attribute_ID"),"", resultSet.getString("value_ATTR")));
+	        }
+	    } 
+	    catch (Exception e) // Si algo del try falla:
+	    {
+	        e.printStackTrace(); // Muestro por consola la pila detallada de errores.
+	    }
+	    return listProductAttribute_Dto.size();
+	}
+	
+	/*
+	  Método para la consulta Update:
+	  UPDATE T_PRODUCT_ATTRIBUTE 
+		SET VALUE_ATTR = 'Rojo'
+		WHERE PRODUCT_ID = 202 AND ATTRIBUTE_ID = 2;
+
+	*/
+	public ProductAttribute_Dto update(Long productId, Long attributeId, String value) 
+	{
+		String attributeName ="";
+		// Intentamos: (Realizamos la conexión con la BBDD [url BBD, UsuarioBBDD, ContraseñaBBDD]):
+		// Todas esas configuraciones las pilla directamente del application.properties
+		try (Connection connection = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) 
+		{
+			// El String SQL: Usamos values ? para que se inserten por parámetros 
+			// En vez de por concatenación, por seguridad de SQL-injection.
+        String sql = 
+        		"UPDATE T_PRODUCT_ATTRIBUTE " +
+        		"SET VALUE_ATTR = ? " +
+        		"WHERE PRODUCT_ID = ? AND ATTRIBUTE_ID = ?;";
+        
+        PreparedStatement statement = connection.prepareStatement(sql); // Preparamos el comando
+        //a continuación, los parámetros:
+        statement.setLong(2, productId);
+        statement.setLong(3, attributeId);
+        statement.setString(1, value);
+        
+        // Ejecutamos el comando, y si el resultado ha dado más de una fila:
+        if (statement.executeUpdate() > 0) 
+        {
+        	// Devolvemos el nuevo registro creado.
+            return new ProductAttribute_Dto(productId, attributeId, attributeName, value);
+        }
+    } 
+		catch (Exception e) // Si algo del try falla:
+		{
+        e.printStackTrace(); // Muestro por consola la pila detallada de errores.
+    }
+    return null;
+}
+	
+	/*
+	Método para la consulta DELETE:
+	DELETE FROM T_PRODUCTATTRIBUTE  
+	WHERE
+	  	PRODUCT_ID = productId AND
+	  	ATTRIBUTE_ID = attributeId AND
+	  	"VALUE = ? "
+	*/
+	public ProductAttribute_Dto delete(Long productId, Long attributeId, String value) 
+	{
+		// Intentamos: (Realizamos la conexión con la BBDD [url BBD, UsuarioBBDD, ContraseñaBBDD]):
+		// Todas esas configuraciones las pilla directamente del application.properties
+			ProductAttribute_Dto entityToDelete = new ProductAttribute_Dto(productId, attributeId, "", value);
+	
+		// Si se ha encontrado el registro:
+		if (entityToDelete != null) 
+		{
+			// El String SQL: Usamos values ? para que se inserten por parámetros 
+			// En vez de por concatenación, por seguridad de SQL-injection.
+			try (Connection connection = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) 
+		    {
+		        String sql = 
+		        		"DELETE FROM T_PRODUCTATTRIBUTE " +
+						"WHERE " +
+		    				"PRODUCT_ID = ? AND " +
+		    				"ATTRIBUTE_ID = ? AND " +
+		    				"VALUE = ? ";
+		        
+		        PreparedStatement statement = connection.prepareStatement(sql); // Preparamos el comando
+		        //a continuación, los parámetros:
+		        statement.setLong(1, productId);
+		        statement.setLong(2, attributeId);
+		        statement.setString(3, value);
+		        
+		        statement.executeUpdate();
+		        // No hace falta if, ya que estamos dentro de un if que compueba si existe.
+		        // devolvemos el registro.
+		        return entityToDelete;
+		    } 
+			catch (Exception e) 
+		    {
+		        e.printStackTrace();
+		    }
+		}
+	
+	
+		return null;
+	}
 }

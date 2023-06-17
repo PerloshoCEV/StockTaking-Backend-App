@@ -35,3 +35,145 @@ VALUES
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*]T_PRODUCT_ATTRIBUTE"; se esperaba "TRUNCATE"
 Syntax error in SQL statement "[*]T_PRODUCT_ATTRIBUTE"; expected "TRUNCATE"; SQL statement:
 T_PRODUCT_ATTRIBUTE [42001-214]
+2023-06-17 16:58:19 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Columna "AttributeName" no encontrada
+Column "AttributeName" not found [42122-214]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:502)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.jdbc.JdbcResultSet.getColumnIndex(JdbcResultSet.java:3492)
+	at org.h2.jdbc.JdbcResultSet.getString(JdbcResultSet.java:301)
+	at com.stocktaking.ApiRepository.ProductAttribute_Repository.countOfAttributeForProduct(ProductAttribute_Repository.java:262)
+	at com.stocktaking.ApiService.ProductAttribute_Service.countOfAttributeForProduct(ProductAttribute_Service.java:58)
+	at com.stocktaking.ApiController.ProductAttribute_Controller.countOfAttributeForProduct(ProductAttribute_Controller.java:95)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:207)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:152)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:884)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:797)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1081)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:974)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1011)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:166)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:894)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2023-06-17 16:58:47 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Columna "AttributeName" no encontrada
+Column "AttributeName" not found [42122-214]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:502)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.jdbc.JdbcResultSet.getColumnIndex(JdbcResultSet.java:3492)
+	at org.h2.jdbc.JdbcResultSet.getString(JdbcResultSet.java:301)
+	at com.stocktaking.ApiRepository.ProductAttribute_Repository.countOfAttributeForProduct(ProductAttribute_Repository.java:262)
+	at com.stocktaking.ApiService.ProductAttribute_Service.countOfAttributeForProduct(ProductAttribute_Service.java:58)
+	at com.stocktaking.ApiController.ProductAttribute_Controller.countOfAttributeForProduct(ProductAttribute_Controller.java:95)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:207)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:152)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:884)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:797)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1081)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:974)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1011)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:166)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:894)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2023-06-17 17:08:16 jdbc[16]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "T_PRODUCTATTRIBUTE" no encontrada
+Table "T_PRODUCTATTRIBUTE" not found; SQL statement:
+UPDATE T_PRODUCTATTRIBUTE 
+(PRODUCT_ID, ATTRIBUTE_ID, VALUE) 
+VALUES (202, 2, 'Rojo') [42102-214]
+2023-06-17 17:08:29 jdbc[16]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "UPDATE T_PRODUCT_ATTRIBUTE \000d\000a[*](PRODUCT_ID, ATTRIBUTE_ID, VALUE) \000d\000aVALUES (202, 2, 'Rojo')"; se esperaba "., AS, SET"
+Syntax error in SQL statement "UPDATE T_PRODUCT_ATTRIBUTE \000d\000a[*](PRODUCT_ID, ATTRIBUTE_ID, VALUE) \000d\000aVALUES (202, 2, 'Rojo')"; expected "., AS, SET"; SQL statement:
+UPDATE T_PRODUCT_ATTRIBUTE 
+(PRODUCT_ID, ATTRIBUTE_ID, VALUE) 
+VALUES (202, 2, 'Rojo') [42001-214]
+2023-06-17 17:10:11 jdbc[16]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "UPDATE T_PRODUCT_ATTRIBUTE \000d\000aSET ATTRIBUTE_ID = 2, [*]VALUE = 'Rojo'\000d\000aWHERE PRODUCT_ID = 202"; se esperaba "identifier"
+Syntax error in SQL statement "UPDATE T_PRODUCT_ATTRIBUTE \000d\000aSET ATTRIBUTE_ID = 2, [*]VALUE = 'Rojo'\000d\000aWHERE PRODUCT_ID = 202"; expected "identifier"; SQL statement:
+UPDATE T_PRODUCT_ATTRIBUTE 
+SET ATTRIBUTE_ID = 2, VALUE = 'Rojo'
+WHERE PRODUCT_ID = 202 [42001-214]
+2023-06-17 17:11:14 jdbc[16]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*]T_PRODUCT_ATTRIBUTE"; se esperaba "TRUNCATE"
+Syntax error in SQL statement "[*]T_PRODUCT_ATTRIBUTE"; expected "TRUNCATE"; SQL statement:
+T_PRODUCT_ATTRIBUTE [42001-214]
+2023-06-17 17:28:45 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "T_PRODUCTATTRIBUTE" no encontrada
+Table "T_PRODUCTATTRIBUTE" not found; SQL statement:
+INSERT INTO T_PRODUCTATTRIBUTE (PRODUCT_ID, ATTRIBUTE_ID, VALUE) VALUES (?, ?, ?) [42102-214]
+2023-06-17 17:29:36 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "T_PRODUCTATTRIBUTE" no encontrada
+Table "T_PRODUCTATTRIBUTE" not found; SQL statement:
+INSERT INTO T_PRODUCTATTRIBUTE (PRODUCT_ID, ATTRIBUTE_ID, VALUE) VALUES (?, ?, ?) [42102-214]
+2023-06-17 17:38:56 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "INSERT INTO T_PRODUCT_ATTRIBUTE (PRODUCT_ID, ATTRIBUTE_ID, [*]VALUE) VALUES (?, ?, ?)"; se esperaba "identifier"
+Syntax error in SQL statement "INSERT INTO T_PRODUCT_ATTRIBUTE (PRODUCT_ID, ATTRIBUTE_ID, [*]VALUE) VALUES (?, ?, ?)"; expected "identifier"; SQL statement:
+INSERT INTO T_PRODUCT_ATTRIBUTE (PRODUCT_ID, ATTRIBUTE_ID, VALUE) VALUES (?, ?, ?) [42001-214]
