@@ -100,7 +100,7 @@ public class TypeAttribute_Controller implements TypeAttribute_ControllerInterfa
 	
 	
 	@Override
-	@GetMapping(path = "/alltypeattributes")
+	@GetMapping(path = "/alltypeattributesAndroid")
 	public ApiResponse<List<TypeAttribute_Dto>> readAllAndroid(Long typeId, Long attributeId) 
 	{
 		Metadata meta = new Metadata();
@@ -155,7 +155,7 @@ public class TypeAttribute_Controller implements TypeAttribute_ControllerInterfa
 	}
 
 	@Override
-	@GetMapping(path = "/typeattribute")
+	@GetMapping(path = "/typeattributeAndroid")
 	public ApiResponse<TypeAttribute_Dto> readOneAndroid(Long typeId, Long attributeId) 
 	{
 		

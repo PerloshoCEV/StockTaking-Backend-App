@@ -31,3 +31,7 @@ INSERT INTO T_PRODUCT_ATTRIBUTE
 PRODUCT_ID, ATTRIBUTE_ID, VALUE_ATTR
 VALUES
 ( 202, 1, '1m' ) [42001-214]
+2023-06-17 15:48:35 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*]T_PRODUCT_ATTRIBUTE"; se esperaba "TRUNCATE"
+Syntax error in SQL statement "[*]T_PRODUCT_ATTRIBUTE"; expected "TRUNCATE"; SQL statement:
+T_PRODUCT_ATTRIBUTE [42001-214]

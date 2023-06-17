@@ -59,7 +59,7 @@ public class ProductAttribute_Controller implements ProductAttribute_ControllerI
 	}
 
 	@Override
-	@GetMapping(path = "/productattribute")
+	@GetMapping(path = "/productattributeAndroid")
 	public ApiResponse<List<ProductAttribute_Dto>> readOneProductAndroid(Long productId) 
 	{
 		Metadata meta = new Metadata();
