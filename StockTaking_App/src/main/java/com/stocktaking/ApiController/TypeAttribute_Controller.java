@@ -97,6 +97,54 @@ public class TypeAttribute_Controller implements TypeAttribute_ControllerInterfa
 		
 		return response;
 	}
+	
+	
+	@Override
+	@GetMapping(path = "/alltypeattributes")
+	public ApiResponse<List<TypeAttribute_Dto>> readAllAndroid(Long typeId, Long attributeId) 
+	{
+		Metadata meta = new Metadata();
+		ApiResponse<List<TypeAttribute_Dto>> response = 
+			new ApiResponse<List<TypeAttribute_Dto>>(meta);
+		
+		
+		//¿Han llegado los dos ID relacionados?
+		if (typeId != -404L && attributeId != -404L)
+		{
+			// Busco el registro por ambos ID
+			response.setResponse(typeAttribute_Service.findOne(typeId, attributeId));
+			return response;
+		}
+		
+			// ¿Faltan ambos ID?
+		if (typeId == -404L && attributeId == -404L) 
+		{
+			// Busco todos los registros
+			response.setResponse(typeAttribute_Service.findAll());
+			return response;
+		}
+		
+						
+		// ¿el que ha llegado es el de Type?
+		if (typeId != -404L)
+		{
+			// Busco por Type
+			response.setResponse(typeAttribute_Service.findByTypeId(typeId));
+			return response;
+		}
+		
+		// ¿El que ha llegado es el de attribute?
+		if (attributeId != -404L)
+		{
+			// Busco por attribute
+			response.setResponse(typeAttribute_Service.findByAttributeId(attributeId));
+			return response;
+		}
+			
+		
+		
+		return response;
+	}
 
 	@Override
 	@GetMapping(path = "/typeattribute")
@@ -106,6 +154,13 @@ public class TypeAttribute_Controller implements TypeAttribute_ControllerInterfa
 		return null;
 	}
 
+	@Override
+	@GetMapping(path = "/typeattribute")
+	public ApiResponse<TypeAttribute_Dto> readOneAndroid(Long typeId, Long attributeId) 
+	{
+		
+		return null;
+	}
 
 	@Override
 	@DeleteMapping(path = "/typeattribute")
