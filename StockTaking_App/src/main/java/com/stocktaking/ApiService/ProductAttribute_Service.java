@@ -19,7 +19,7 @@ public class ProductAttribute_Service
 	/*
 		Método CreateService.
 	*/
-	public ProductAttribute_Dto createService(Long productId, Long attributeId, String value) 
+	public ProductAttribute_Dto createValueAttribute(Long productId, Long attributeId, String value) 
 	{
 		ProductAttribute_Dto ProductAttributeToSave = null;
 		try
@@ -34,14 +34,6 @@ public class ProductAttribute_Service
 		return ProductAttributeToSave;
 	}
 
-
-	/*
-	Método deleteId.
-	*/
-	public ProductAttribute_Dto deleteId(ProductAttribute_Dto deleteEntity) 
-	{
-		return repositorySql.delete(deleteEntity.getProductId(), deleteEntity.getAttributeId(),deleteEntity.getValue());
-	}
 	
 	/*
 	Método findByProductId.

@@ -10,21 +10,22 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.stocktaking.ApiControllerInterface.ProductAttribute_ControllerInterface;
-import com.stocktaking.ApiRepository.DynamicRepository;
+import com.stocktaking.ApiService.ProductAttribute_Service;
 import com.stocktaking.Entity_DTO.ProductAttribute_Dto;
+import com.stocktaking.Enum.MessageResult;
 import com.stocktaking.Response.ApiResponse;
+import com.stocktaking.Response.Metadata;
 
 @RestController
 public class ProductAttribute_Controller implements ProductAttribute_ControllerInterface
 {
 	@Autowired
-	DynamicRepository repository;
+	ProductAttribute_Service service;
 
 	@Override
 	@PostMapping(path = "/productattribute")
 	public ApiResponse<ProductAttribute_Dto> create(ProductAttribute_Dto entity) 
 	{
-		// TODO Auto-generated method stub
 		return null;
 	}
 	
@@ -32,16 +33,25 @@ public class ProductAttribute_Controller implements ProductAttribute_ControllerI
 	@GetMapping(path = "/allproductattribute")
 	public ApiResponse<List<ProductAttribute_Dto>> readAll() 
 	{
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
 	@Override
 	@GetMapping(path = "/productattribute")
-	public ApiResponse<ProductAttribute_Dto> readOne(ProductAttribute_Dto entity) 
+	public ApiResponse<List<ProductAttribute_Dto>> readOne(ProductAttribute_Dto entity) 
 	{
-		// TODO Auto-generated method stub
-		return null;
+		Metadata meta = new Metadata();
+		ApiResponse<List<ProductAttribute_Dto>> response = new ApiResponse<List<ProductAttribute_Dto>>(meta);
+
+		response.setResponse(service.readByProductId(entity));
+		
+		if (response.getResponse() != null)
+		{
+			response.setMessage(MessageResult.Success);
+		}
+		
+		return response;
 	}
 
 	@Override

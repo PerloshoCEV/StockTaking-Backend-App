@@ -10,6 +10,7 @@ public class ProductAttribute_Dto implements MapperInterface<T_ProductAttribute>
 	*/
 	private Long productId;
 	private Long attributeId;
+	private String attributeName;
 	private String value;
 	
 	/*
@@ -26,13 +27,15 @@ public class ProductAttribute_Dto implements MapperInterface<T_ProductAttribute>
 	
 	public ProductAttribute_Dto
 	(
-		Long productId, 
+		Long productId,
 		Long attributeId, 
+		String attributeName,
 		String value
 	) 
 	{
 		this.productId = productId;
 		this.attributeId = attributeId;
+		this.attributeName = attributeName;
 		this.value = value;
 	}
 
@@ -69,10 +72,21 @@ public class ProductAttribute_Dto implements MapperInterface<T_ProductAttribute>
 		this.value = value;
 	}
 	
-	public void setAll(Long productId, Long attributeId, String value) 
+	public String getAttributeName() 
+	{
+		return attributeName;
+	}
+
+	public void setAttributeName(String attributeName) 
+	{
+		this.attributeName = attributeName;
+	}
+
+	public void setAll(Long productId, Long attributeId, String attributeName, String value) 
 	{
 		this.productId = productId;
 		this.attributeId = attributeId;
+		this.attributeName = attributeName;
 		this.value = value;
 	}
 	
@@ -87,6 +101,7 @@ public class ProductAttribute_Dto implements MapperInterface<T_ProductAttribute>
 		{
 			this.productId = entity.getId().getProductId();
 			this.attributeId = entity.getId().getAttributeId();
+			this.attributeName = entity.getAttribute().getName();
 			this.value = entity.getValueAttr();
 		}
 		catch (Exception e)

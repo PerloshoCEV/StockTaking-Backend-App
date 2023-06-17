@@ -40,6 +40,7 @@ public class ProductAttribute_Repository
 		*/
 		public ProductAttribute_Dto create(Long productId, Long attributeId, String value) 
 		{
+			String attributeName ="";
 			// Intentamos: (Realizamos la conexión con la BBDD [url BBD, UsuarioBBDD, ContraseñaBBDD]):
 			// Todas esas configuraciones las pilla directamente del application.properties
 			try (Connection connection = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) 
@@ -61,7 +62,7 @@ public class ProductAttribute_Repository
 	          if (statement.executeUpdate() > 0) 
 	          {
 	          	// Devolvemos el nuevo registro creado.
-	              return new ProductAttribute_Dto(productId, attributeId, value);
+	              return new ProductAttribute_Dto(productId, attributeId, attributeName, value);
 	          }
 	      } 
 			catch (Exception e) // Si algo del try falla:
@@ -84,7 +85,7 @@ public class ProductAttribute_Repository
 	{
 	// Intentamos: (Realizamos la conexión con la BBDD [url BBD, UsuarioBBDD, ContraseñaBBDD]):
 	// Todas esas configuraciones las pilla directamente del application.properties
-		ProductAttribute_Dto entityToDelete = new ProductAttribute_Dto(productId, attributeId, value);
+		ProductAttribute_Dto entityToDelete = new ProductAttribute_Dto(productId, attributeId, "", value);
 
 	// Si se ha encontrado el registro:
 	if (entityToDelete != null) 
@@ -141,8 +142,16 @@ public class ProductAttribute_Repository
 	    	// El String SQL: Usamos values ? para que se inserten por parámetros 
 			// En vez de por concatenación, por seguridad de SQL-injection.
 	        String sql = 
-	        		"SELECT * " +
-	        		"FROM T_PRODUCTATTRIBUTE " +
+	        		"SELECT "
+	        				+ "T1.PRODUCT_ID AS Product_ID, "
+	        				+ "T1.ATTRIBUTE_ID AS Attribute_ID, "
+	        				+ "T2.NAME AS AttributeName, "
+	        				+ "T1.VALUE_ATTR AS Value_ATTR " +
+	        		"FROM "
+	        			+ "T_PRODUCT_ATTRIBUTE AS T1 "
+	        				+ "INNER JOIN "
+        				+ "T_ATTRIBUTE AS T2 "
+        				+ " ON (T1.ATTRIBUTE_ID = T2.ID) " +
 	        		"WHERE PRODUCT_ID = ? ";
 	        
 	        PreparedStatement statement = connection.prepareStatement(sql); // Preparamos el comando
@@ -154,8 +163,7 @@ public class ProductAttribute_Repository
 	        // Si podemos posicionarnos en el siguiente registro, empezando desde el principio (Primer registro)
 	        while (resultSet.next()) 
 	        {      
-	        	listProductAttribute_Dto.add(new ProductAttribute_Dto(resultSet.getLong("Product_ID"),resultSet.getLong("Attribute_ID"),resultSet.getString("value")));
-	        	
+	        	listProductAttribute_Dto.add(new ProductAttribute_Dto(resultSet.getLong("Product_ID"),resultSet.getLong("Attribute_ID"), resultSet.getString("AttributeName"), resultSet.getString("value_ATTR")));
 	        }
 	    } 
 	    catch (Exception e) // Si algo del try falla:
@@ -185,9 +193,17 @@ public class ProductAttribute_Repository
 	    	// El String SQL: Usamos values ? para que se inserten por parámetros 
 			// En vez de por concatenación, por seguridad de SQL-injection.
 	        String sql = 
-	        		"SELECT * " +
-	        		"FROM T_PRODUCTATTRIBUTE " +
-	        		"WHERE ATTRIBUTE_ID = ? ";
+	        		"SELECT "
+	        				+ "T1.PRODUCT_ID AS Product_ID, "
+	        				+ "T1.ATTRIBUTE_ID AS Attribute_ID, "
+	        				+ "T2.NAME AS AttributeName, "
+	        				+ "T1.VALUE_ATTR AS Value_ATTR " +
+	        		"FROM "
+	        			+ "T_PRODUCT_ATTRIBUTE AS T1 "
+	        				+ "INNER JOIN "
+        				+ "T_ATTRIBUTE AS T2 "
+        				+ " ON (T1.ATTRIBUTE_ID = T2.ID) " +
+	        		"WHERE T1.ATTRIBUTE_ID = ? ";
 	        
 	        PreparedStatement statement = connection.prepareStatement(sql); // Preparamos el comando
 	        //a continuación, los parámetros:
@@ -198,8 +214,7 @@ public class ProductAttribute_Repository
 	        // Si podemos posicionarnos en el siguiente registro, empezando desde el principio (Primer registro)
 	        while (resultSet.next()) 
 	        {      
-	        	listProductAttribute_Dto.add(new ProductAttribute_Dto(resultSet.getLong("Product_ID"),resultSet.getLong("Attribute_ID"),resultSet.getString("value")));
-	        	
+	        	listProductAttribute_Dto.add(new ProductAttribute_Dto(resultSet.getLong("Product_ID"),resultSet.getLong("Attribute_ID"), resultSet.getString("AttributeName"), resultSet.getString("value_ATTR")));
 	        }
 	    } 
 	    catch (Exception e) // Si algo del try falla:
