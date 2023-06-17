@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.stocktaking.ApiControllerInterface.ProductAttribute_ControllerInterface;
 import com.stocktaking.ApiService.ProductAttribute_Service;
+import com.stocktaking.ApiService.Product_Service;
 import com.stocktaking.Entity_DTO.ProductAttribute_Dto;
+import com.stocktaking.Entity_DTO.Product_Dto;
 import com.stocktaking.Enum.MessageResult;
 import com.stocktaking.Response.ApiResponse;
 import com.stocktaking.Response.Metadata;
@@ -21,6 +23,8 @@ public class ProductAttribute_Controller implements ProductAttribute_ControllerI
 {
 	@Autowired
 	ProductAttribute_Service service;
+	@Autowired
+	Product_Service productService;
 
 	@Override
 	@PostMapping(path = "/productattribute")
@@ -39,7 +43,7 @@ public class ProductAttribute_Controller implements ProductAttribute_ControllerI
 
 	@Override
 	@GetMapping(path = "/productattribute")
-	public ApiResponse<List<ProductAttribute_Dto>> readOne(ProductAttribute_Dto entity) 
+	public ApiResponse<List<ProductAttribute_Dto>> readOneProduct(ProductAttribute_Dto entity) 
 	{
 		Metadata meta = new Metadata();
 		ApiResponse<List<ProductAttribute_Dto>> response = new ApiResponse<List<ProductAttribute_Dto>>(meta);
@@ -54,6 +58,25 @@ public class ProductAttribute_Controller implements ProductAttribute_ControllerI
 		return response;
 	}
 
+	@Override
+	@GetMapping(path = "/productattribute")
+	public ApiResponse<List<ProductAttribute_Dto>> readOneProductAndroid(Long productId) 
+	{
+		Metadata meta = new Metadata();
+		ApiResponse<List<ProductAttribute_Dto>> response = new ApiResponse<List<ProductAttribute_Dto>>(meta);
+		ProductAttribute_Dto entity = new ProductAttribute_Dto();
+		entity.setProductId(productId);
+		response.setResponse(service.readByProductId(entity));
+		
+		if (response.getResponse() != null)
+		{
+			response.setMessage(MessageResult.Success);
+		}
+		
+		return response;
+	}
+
+	
 	@Override
 	@PutMapping(path = "/productattribute")
 	public ApiResponse<ProductAttribute_Dto> Update(ProductAttribute_Dto entity) 

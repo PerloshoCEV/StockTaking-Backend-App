@@ -152,7 +152,7 @@ public class ProductAttribute_Repository
 	        				+ "INNER JOIN "
         				+ "T_ATTRIBUTE AS T2 "
         				+ " ON (T1.ATTRIBUTE_ID = T2.ID) " +
-	        		"WHERE PRODUCT_ID = ? ";
+	        		"WHERE T1.PRODUCT_ID = ? ";
 	        
 	        PreparedStatement statement = connection.prepareStatement(sql); // Preparamos el comando
 	        //a continuación, los parámetros:
