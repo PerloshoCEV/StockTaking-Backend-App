@@ -177,3 +177,12 @@ INSERT INTO T_PRODUCTATTRIBUTE (PRODUCT_ID, ATTRIBUTE_ID, VALUE) VALUES (?, ?, ?
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "INSERT INTO T_PRODUCT_ATTRIBUTE (PRODUCT_ID, ATTRIBUTE_ID, [*]VALUE) VALUES (?, ?, ?)"; se esperaba "identifier"
 Syntax error in SQL statement "INSERT INTO T_PRODUCT_ATTRIBUTE (PRODUCT_ID, ATTRIBUTE_ID, [*]VALUE) VALUES (?, ?, ?)"; expected "identifier"; SQL statement:
 INSERT INTO T_PRODUCT_ATTRIBUTE (PRODUCT_ID, ATTRIBUTE_ID, VALUE) VALUES (?, ?, ?) [42001-214]
+2023-06-18 19:00:38 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]WHERE TYPE_ID = ? AND ATTRIBUTE_ID = ?"; SQL statement:
+WHERE TYPE_ID = ? AND ATTRIBUTE_ID = ? [42000-214]
+2023-06-18 19:01:16 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]WHERE TYPE_ID = ? AND ATTRIBUTE_ID = ?"; SQL statement:
+WHERE TYPE_ID = ? AND ATTRIBUTE_ID = ? [42000-214]
+2023-06-18 19:02:46 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]WHERE TYPE_ID = ? AND ATTRIBUTE_ID = ?"; SQL statement:
+WHERE TYPE_ID = ? AND ATTRIBUTE_ID = ? [42000-214]
