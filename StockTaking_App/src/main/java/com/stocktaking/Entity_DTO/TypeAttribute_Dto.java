@@ -27,7 +27,21 @@ public class TypeAttribute_Dto implements MapperInterface<T_TypeAttribute>
 	
 	public TypeAttribute_Dto
 	(
-		Long typeId, 
+		Long typeId,
+		String typeName,
+		Long attributeId,
+		String attributeName
+	) 
+	{
+		this.typeId = typeId;
+		this.typeName = typeName;
+		this.attributeId = attributeId;
+		this.attributeName = attributeName;
+	}
+	
+	public TypeAttribute_Dto
+	(
+		Long typeId,
 		Long attributeId
 	) 
 	{

@@ -113,6 +113,10 @@ public class TypeAttribute_Controller implements TypeAttribute_ControllerInterfa
 		{
 			// Busco el registro por ambos ID
 			response.setResponse(typeAttribute_Service.findOne(typeId, attributeId));
+			if (response.getResponse() != null)
+			{
+				response.setMessage(MessageResult.Success);
+			}
 			return response;
 		}
 		
@@ -121,6 +125,10 @@ public class TypeAttribute_Controller implements TypeAttribute_ControllerInterfa
 		{
 			// Busco todos los registros
 			response.setResponse(typeAttribute_Service.findAll());
+			if (response.getResponse() != null)
+			{
+				response.setMessage(MessageResult.Success);
+			}
 			return response;
 		}
 		
@@ -130,6 +138,10 @@ public class TypeAttribute_Controller implements TypeAttribute_ControllerInterfa
 		{
 			// Busco por Type
 			response.setResponse(typeAttribute_Service.findByTypeId(typeId));
+			if (response.getResponse() != null)
+			{
+				response.setMessage(MessageResult.Success);
+			}
 			return response;
 		}
 		
@@ -138,6 +150,10 @@ public class TypeAttribute_Controller implements TypeAttribute_ControllerInterfa
 		{
 			// Busco por attribute
 			response.setResponse(typeAttribute_Service.findByAttributeId(attributeId));
+			if (response.getResponse() != null)
+			{
+				response.setMessage(MessageResult.Success);
+			}
 			return response;
 		}
 			
@@ -222,4 +238,5 @@ public class TypeAttribute_Controller implements TypeAttribute_ControllerInterfa
 		
 		return true;
 	}
+	
 }

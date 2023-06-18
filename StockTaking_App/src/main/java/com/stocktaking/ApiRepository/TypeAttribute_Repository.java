@@ -95,9 +95,21 @@ public class TypeAttribute_Repository
 	    	// El String SQL: Usamos values ? para que se inserten por parámetros 
 			// En vez de por concatenación, por seguridad de SQL-injection.
 	        String sql = 
-	        		"SELECT * " +
-	        		"FROM T_TYPE_ATTRIBUTE " +
-	        		"WHERE TYPE_ID = ? ";
+	        		"SELECT "
+	        				+ "T1.ATTRIBUTE_ID, "
+	        				+ "T1.TYPE_ID, "
+	        				+ "T2.NAME AS TYPE_NAME, "
+	        				+ "T3.NAME AS ATTRIBUTE_NAME "
+	        		+ "FROM "
+	        			+ "T_TYPE_ATTRIBUTE AS T1 "
+	        				+ "INNER JOIN "
+        				+ "T_TYPE AS T2 "
+	        					+ "ON (T1.TYPE_ID= T2.ID) "
+	        				+ "INNER JOIN "
+        				+ "T_ATTRIBUTE AS T3 "
+        					+ "ON (T1.ATTRIBUTE_ID = T3.ID) "
+					+ "WHERE "
+						+ "T1.TYPE_ID =?";
 	        
 	        PreparedStatement statement = connection.prepareStatement(sql); // Preparamos el comando
 	        //a continuación, los parámetros:
@@ -108,7 +120,16 @@ public class TypeAttribute_Repository
 	        // Si podemos posicionarnos en el siguiente registro, empezando desde el principio (Primer registro)
 	        while (resultSet.next()) 
 	        {      
-	        	listTypeAttribute_Dto.add(new TypeAttribute_Dto(resultSet.getLong("Type_ID"),resultSet.getLong("Attribute_ID")));
+	        	listTypeAttribute_Dto.add
+	        		(
+        				new TypeAttribute_Dto
+        				(
+    						resultSet.getLong("Type_ID"),
+    						resultSet.getString("TYPE_NAME"), 
+    						resultSet.getLong("Attribute_ID"), 
+    						resultSet.getString("ATTRIBUTE_NAME")
+						)
+    				);
 	        	
 	        }
 	    } 
@@ -135,10 +156,22 @@ public class TypeAttribute_Repository
 	    {
 	    	// El String SQL: Usamos values ? para que se inserten por parámetros 
 			// En vez de por concatenación, por seguridad de SQL-injection.
-	        String sql = 
-	        		"SELECT * " +
-	        		"FROM T_TYPE_ATTRIBUTE " +
-	        		"WHERE ATTRIBUTE_ID = ? ";
+	    	String sql = 
+	        		"SELECT "
+	        				+ "T1.ATTRIBUTE_ID, "
+	        				+ "T1.TYPE_ID, "
+	        				+ "T2.NAME AS TYPE_NAME, "
+	        				+ "T3.NAME AS ATTRIBUTE_NAME "
+	        		+ "FROM "
+	        			+ "T_TYPE_ATTRIBUTE AS T1 "
+	        				+ "INNER JOIN "
+        				+ "T_TYPE AS T2 "
+	        					+ "ON (T1.TYPE_ID= T2.ID) "
+	        				+ "INNER JOIN "
+        				+ "T_ATTRIBUTE AS T3 "
+        					+ "ON (T1.ATTRIBUTE_ID = T3.ID) "
+					+ "WHERE "
+						+ "T1.ATTRIBUTE_ID =?";
 	        
 	        PreparedStatement statement = connection.prepareStatement(sql); // Preparamos el comando
 	        //a continuación, los parámetros:
@@ -149,8 +182,16 @@ public class TypeAttribute_Repository
 	        // Si podemos posicionarnos en el siguiente registro, empezando desde el principio (Primer registro)
 	        while (resultSet.next()) 
 	        {      
-	        	listTypeAttribute_Dto.add(new TypeAttribute_Dto(resultSet.getLong("Type_ID"),resultSet.getLong("Attribute_ID")));
-	        	
+	        	listTypeAttribute_Dto.add
+        		(
+    				new TypeAttribute_Dto
+    				(
+						resultSet.getLong("Type_ID"),
+						resultSet.getString("TYPE_NAME"), 
+						resultSet.getLong("Attribute_ID"), 
+						resultSet.getString("ATTRIBUTE_NAME")
+					)
+				);
 	        }
 	    } 
 	    catch (Exception e) // Si algo del try falla:
@@ -176,9 +217,20 @@ public class TypeAttribute_Repository
 	    {
 	    	// El String SQL: Usamos values ? para que se inserten por parámetros 
 			// En vez de por concatenación, por seguridad de SQL-injection.
-	        String sql = 
-	        		"SELECT * " +
-	        		"FROM T_TYPE_ATTRIBUTE;";
+	    	String sql = 
+	        		"SELECT "
+	        				+ "T1.ATTRIBUTE_ID, "
+	        				+ "T1.TYPE_ID, "
+	        				+ "T2.NAME AS TYPE_NAME, "
+	        				+ "T3.NAME AS ATTRIBUTE_NAME "
+	        		+ "FROM "
+	        			+ "T_TYPE_ATTRIBUTE AS T1 "
+	        				+ "INNER JOIN "
+        				+ "T_TYPE AS T2 "
+	        					+ "ON (T1.TYPE_ID= T2.ID) "
+	        				+ "INNER JOIN "
+        				+ "T_ATTRIBUTE AS T3 "
+        					+ "ON (T1.ATTRIBUTE_ID = T3.ID); ";
 	        		
 	        
 	        PreparedStatement statement = connection.prepareStatement(sql); // Preparamos el comando
@@ -188,8 +240,16 @@ public class TypeAttribute_Repository
 	        // Si podemos posicionarnos en el siguiente registro, empezando desde el principio (Primer registro)
 	        while (resultSet.next()) 
 	        {      
-	        	listTypeAttribute_Dto.add(new TypeAttribute_Dto(resultSet.getLong("Type_ID"),resultSet.getLong("Attribute_ID")));
-	        	
+	        	listTypeAttribute_Dto.add
+        		(
+    				new TypeAttribute_Dto
+    				(
+						resultSet.getLong("Type_ID"),
+						resultSet.getString("TYPE_NAME"), 
+						resultSet.getLong("Attribute_ID"), 
+						resultSet.getString("ATTRIBUTE_NAME")
+					)
+				);
 	        }
 	    } 
 	    catch (Exception e) // Si algo del try falla:
@@ -215,10 +275,23 @@ public class TypeAttribute_Repository
 	    {
 	    	// El String SQL: Usamos values ? para que se inserten por parámetros 
 			// En vez de por concatenación, por seguridad de SQL-injection.
-	        String sql = 
-	        		"SELECT * " +
-	        		"FROM T_TYPE_ATTRIBUTE;" +
-	        		"WHERE TYPE_ID = ? AND ATTRIBUTE_ID = ?";
+	    	String sql = 
+	        		"SELECT "
+	        				+ "T1.ATTRIBUTE_ID, "
+	        				+ "T1.TYPE_ID, "
+	        				+ "T2.NAME AS TYPE_NAME, "
+	        				+ "T3.NAME AS ATTRIBUTE_NAME "
+	        		+ "FROM "
+	        			+ "T_TYPE_ATTRIBUTE AS T1 "
+	        				+ "INNER JOIN "
+        				+ "T_TYPE AS T2 "
+	        					+ "ON (T1.TYPE_ID= T2.ID) "
+	        				+ "INNER JOIN "
+        				+ "T_ATTRIBUTE AS T3 "
+        					+ "ON (T1.ATTRIBUTE_ID = T3.ID) "
+					+ "WHERE "
+						+ "WHERE T1.TYPE_ID = ? AND T2.ATTRIBUTE_ID = ?";
+	    	
 	        
 	        PreparedStatement statement = connection.prepareStatement(sql); // Preparamos el comando
 	        //a continuación, los parámetros:
@@ -230,8 +303,16 @@ public class TypeAttribute_Repository
 	        // Si podemos posicionarnos en el siguiente registro, empezando desde el principio (Primer registro)
 	        while (resultSet.next()) 
 	        {      
-	        	listTypeAttribute_Dto.add(new TypeAttribute_Dto(resultSet.getLong("Type_ID"),resultSet.getLong("Attribute_ID")));
-	        	
+	        	listTypeAttribute_Dto.add
+        		(
+    				new TypeAttribute_Dto
+    				(
+						resultSet.getLong("Type_ID"),
+						resultSet.getString("TYPE_NAME"), 
+						resultSet.getLong("Attribute_ID"), 
+						resultSet.getString("ATTRIBUTE_NAME")
+					)
+				);
 	        }
 	    } 
 	    catch (Exception e) // Si algo del try falla:
